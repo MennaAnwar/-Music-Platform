@@ -1,0 +1,38 @@
+.title {
+  text-align: center;
+}
+
+.title .h4-title {
+  color: var(--white-color);
+}
+
+.fadeup-animation {
+  visibility: visible;
+  animation-duration: 0.8s;
+  animation-delay: 0.2s;
+  animation-name: fadeup-animation;
+}
+
+@keyframes fadeup-animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(30px);
+    transform: translateY(30px);
+    -webkit-transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+      -webkit-transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+      -webkit-transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    -o-transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+      transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+      transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    transition: opacity 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+      transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1),
+      -webkit-transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+    transform: translateY(0);
+  }
+}

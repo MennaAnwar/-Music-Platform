@@ -69,7 +69,7 @@ h6 {
 }
 
 .h2-title:before {
-  content: "â™«";
+  content: "♫";
   display: block;
   position: absolute;
   top: 50%;
@@ -281,14 +281,6 @@ a:hover {
   background-image: linear-gradient(90deg, rgb(41, 50, 60), rgb(72, 85, 99));
   color: rgb(255, 255, 255);
   transition: all 0.3s ease 0s;
-}
-
-.title {
-  text-align: center;
-}
-
-.title .h4-title {
-  color: var(--white-color);
 }
 
 .video-wrapper .clip.is-active-clip {
@@ -847,132 +839,6 @@ canvas {
 
 /*==========Banner CSS End==========*/
 
-/*========== Artist Section CSS Start==========*/
-
-.artist-section {
-  padding: 80px 0 50px;
-}
-
-.artist-row {
-  padding-top: 80px;
-  margin: 0 60px;
-}
-
-.artist-row .g-5 {
-  --bs-gutter-x: 5rem;
-  --bs-gutter-y: 0;
-}
-
-.artist-box {
-  position: relative;
-  margin-bottom: 30px;
-  max-width: 400px;
-  padding: 30px;
-  box-shadow: 10px 10px 19px #282e61, -10px -10px 19px #363e83;
-  display: block;
-}
-
-.artist-box.even {
-  margin-top: 60px;
-  margin-left: auto;
-}
-
-.artist-box .back-img {
-  position: relative;
-  filter: grayscale(1);
-  transition: 0.5s linear;
-  z-index: 0;
-  pointer-events: auto;
-  min-height: 450px;
-  margin-left: auto;
-}
-
-.rotate-text {
-  position: absolute;
-  top: 0;
-  left: -20px;
-  transform: rotate(90deg);
-  transform-origin: 0 0;
-  width: 370px;
-}
-
-.artist-box.even .rotate-text {
-  top: auto;
-  bottom: -40px;
-  left: -45px;
-  transform: rotate(270deg);
-}
-
-.artist-content {
-  margin-left: auto;
-  margin-top: 20px;
-  display: -webkit-box;
-  -webkit-line-clamp: 3;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
-.artist-content p {
-  color: var(--white-color);
-}
-
-.artist-box.even .artist-content {
-  margin-top: 0;
-  margin-bottom: 20px;
-}
-
-.artist-box-info {
-  position: absolute;
-  top: 30px;
-  left: -35px;
-  z-index: 1;
-}
-
-.artist-box:hover .back-img {
-  transition: all 0.5s;
-  filter: grayscale(0);
-}
-
-.artist-box .rotate-text span {
-  --fill-color: var(--primary-color);
-  position: relative;
-  display: inline;
-  padding: 4px 0;
-  letter-spacing: 5px;
-  font-weight: bold;
-  font-size: 2.5rem;
-  text-decoration: none;
-  text-transform: uppercase;
-  -webkit-text-stroke: 1px var(--fill-color);
-  background: linear-gradient(var(--fill-color) 0 100%) left/0 no-repeat;
-  color: transparent;
-  -webkit-background-clip: text;
-  background-clip: text;
-  transition: 0.5s linear;
-}
-
-.artist-box:hover span {
-  background-size: 100%;
-  transition: 0.5s linear;
-}
-
-.artist-box .artist-box-info a:hover {
-  -webkit-text-stroke: 1px var(--white-color);
-  transition: all 0.5s;
-}
-
-.artist-box .h4-title {
-  font-size: 70px;
-  line-height: 70px;
-  font-weight: bold;
-  position: absolute;
-  bottom: -40px;
-  right: -25px;
-  z-index: 1;
-  margin: 0;
-}
-
 /* New Design Start */
 
 .nav-menu {
@@ -1394,7 +1260,7 @@ canvas {
 }
 
 .music-list-box:after {
-  content: "â™«";
+  content: "♫";
   display: block;
   position: absolute;
   top: 45%;
@@ -1532,7 +1398,7 @@ canvas {
 }
 
 .event-section:before {
-  content: "â™«";
+  content: "♫";
   display: block;
   position: absolute;
   top: 50%;
@@ -2275,7 +2141,7 @@ span.big-text {
 }
 
 .artists-details:before {
-  content: "â™«";
+  content: "♫";
   display: block;
   position: absolute;
   top: 50%;
