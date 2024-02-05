@@ -3,6 +3,7 @@ import Context from "../../Context";
 import Sidebar from "./../Sidebar/Sidebar";
 import Navbar from "./../Navbar/Navbar";
 import MobSidebar from "../mobSidebar/mobSidebar";
+import "./Dashboard.css";
 
 export default function Dashboard() {
   const [sidebar, IsOpen] = useState(false);
@@ -14,10 +15,12 @@ export default function Dashboard() {
         IsOpen,
       }}
     >
-      <div id="wrapper">
+      <div className="main-container">
         <Sidebar />
-        <Navbar />
         <MobSidebar />
+        <div className="main_content dashboard_part">
+          <Navbar />
+        </div>
       </div>
     </Context.Provider>
   );

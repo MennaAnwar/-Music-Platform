@@ -1,11 +1,11 @@
-import { useState } from "react";
+import { useContext } from "react";
+import Context from "../../Context";
 import "./Navbar.css";
 import Dropdown from "../UserDropdown/UserDropDown";
 import CircleBtn from "../Circlebtn/Circlebtn";
 
 const Navbar = () => {
-  const [sidebar, IsOpen] = useState(false);
-
+  const { sidebar, IsOpen } = useContext(Context);
   const OpenSidebar = () => {
     IsOpen((sidebar) => !sidebar);
   };

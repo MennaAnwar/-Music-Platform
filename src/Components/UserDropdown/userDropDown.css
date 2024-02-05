@@ -48,7 +48,8 @@
   right: 0px;
   box-sizing: border-box;
   border: 7px solid black;
-  border-color: transparent transparent var(--content-bg) var(--content-bg);
+  border-color: transparent transparent white white;
+  color: white;
   transform-origin: 0 0;
   transform: rotate(135deg);
   box-shadow: -3px 3px 3px -3px rgba(214, 214, 214, 0.78);
