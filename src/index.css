@@ -820,10 +820,9 @@ canvas {
   margin-top: 30px;
   display: flex;
   align-items: center;
-}
-
-.banner-btn .sec-btn span {
-  margin-right: 10px;
+  justify-content: center;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .sec-btn.hover-btn {
@@ -2587,10 +2586,6 @@ section.events-inner-section {
     width: 100%;
   }
 
-  .banner-btn {
-    justify-content: center;
-    flex-wrap: wrap;
-  }
   .sec-btn,
   .sec-btn.hover-btn {
     margin: 15px 10px 0;
@@ -3190,3 +3185,47 @@ section.events-inner-section {
 }
 
 /*==========Responsive End==========*/
+
+.left-animation {
+  visibility: visible;
+  animation-duration: 0.8s;
+  animation-delay: 0.2s;
+  animation-name: left-animation;
+}
+
+.right-animation {
+  visibility: visible;
+  animation-duration: 0.8s;
+  animation-delay: 0.2s;
+  animation-name: right-animation;
+}
+
+@keyframes right-animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(5vw, 0, 0) scale3d(1, 1, 1) rotateX(0)
+      rotateY(0) rotateZ(0) skew(0deg, 0deg);
+    transform: translate3d(5vw, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0)
+      rotateZ(0) skew(0deg, 0deg);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}
+
+@keyframes left-animation {
+  0% {
+    opacity: 0;
+    -webkit-transform: translate3d(-5vw, 0, 0) scale3d(1, 1, 1) rotateX(0)
+      rotateY(0) rotateZ(0) skew(0deg, 0deg);
+    transform: translate3d(-5vw, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0)
+      rotateZ(0) skew(0deg, 0deg);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateX(0);
+    transform: translateX(0);
+  }
+}

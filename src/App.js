@@ -1,7 +1,8 @@
 import "./App.css";
-import Artists from "./Components/Artists/Artists";
-import MainBanner from "./Components/MainBanner/MainBanner";
-import Navbar from "./Components/Navbar/Navbar";
+import Navbar from "./Components/LandingPage/Navbar/Navbar";
+import MainBanner from "./Components/LandingPage/MainBanner/MainBanner";
+import Artists from "./Components/LandingPage/Artists/Artists";
+import Footer from "./Components/LandingPage/Footer/Footer";
 
 function App() {
   return (
@@ -9,6 +10,7 @@ function App() {
       <Navbar />
       <MainBanner />
       <Artists />
+      <Footer />
     </div>
   );
 }
