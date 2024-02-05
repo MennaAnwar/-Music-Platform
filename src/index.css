@@ -132,7 +132,7 @@ h6 {
   --primary-overlay-color: 36, 77, 77;
 }
 
-body {
+.body {
   font-family: var(--body-font);
   background: var(--body-color);
   color: var(--white-color);
