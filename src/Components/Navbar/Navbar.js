@@ -11,18 +11,15 @@ const Navbar = () => {
   };
 
   return (
-    <div className="container-fluid g-0">
-      <div className="row">
-        <div className="col-lg-12 p-0">
-          <div className="header_iner d-flex bd-highlight mb-3 align-items-center">
+    <div className="header">
+      <div className="container">
+        <div className="header-container">
+          <div className="d-flex bd-highlight align-items-center">
             <div className="p-2 bd-highlight d-lg-none">
               <CircleBtn clickHandler={OpenSidebar} active={sidebar} />
             </div>
             <div className="p-2 bd-highlight logo d-lg-none">
               <h3 className="m-0">LOGO</h3>
-            </div>
-            <div className="p-2 bd-highlight username d-none d-lg-block">
-              <h5>Welcome Back , </h5>
             </div>
             <div className="ms-auto p-2 bd-highlight d-flex align-items-center">
               <Dropdown />

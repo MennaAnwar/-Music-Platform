@@ -5,13 +5,12 @@
 
 .trigger {
   height: 50px;
-  background-color: var(--bs-teal);
   z-index: 5;
   position: relative;
   display: block;
   width: 50px;
   border-radius: 100%;
-  color: #bbb;
+  color: white;
   cursor: pointer;
 }
 
@@ -28,10 +27,8 @@
   height: 100%;
   top: 0;
   left: 0;
-  color: var(--mc1);
   opacity: 0.15;
   border-radius: 100%;
-  box-shadow: 0 5px 20px;
   transition: 0.3s;
 }
 
@@ -55,7 +52,7 @@
   display: block;
   height: 2px;
   position: absolute;
-  background-color: #bbb;
+  background-color: white;
   content: "";
   transition: 0.3s;
 }
