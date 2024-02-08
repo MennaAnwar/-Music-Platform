@@ -1,0 +1,25 @@
+@media (min-width: 576px) {
+  .cover.cover--round .cover__image img {
+    border-radius: 1rem;
+  }
+}
+
+.cover .cover__image img {
+  max-width: 100%;
+  width: 100%;
+}
+.cover .cover__image img {
+  border-radius: 0.5rem;
+}
+
+.cover {
+  position: relative;
+}
+
+.cover .cover__foot {
+  margin-top: 0.75rem;
+}
+
+.cover .cover__image img {
+  border-radius: 0.5rem;
+}

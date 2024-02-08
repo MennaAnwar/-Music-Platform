@@ -221,6 +221,10 @@ a:hover {
   opacity: 0.96;
 }
 
+.avatar__image {
+  border-radius: 50%;
+}
+
 .gradient-overlay {
   position: absolute;
   inset: 0px;

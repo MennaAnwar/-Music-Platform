@@ -113,7 +113,11 @@ export default function ArtistDetails() {
               >
                 <div className="d-block text-center">
                   <a href="/demo/app/artist/1/details">
-                    <img src={item.src} alt={item.name} />
+                    <img
+                      src={item.src}
+                      alt={item.name}
+                      className="avatar__image"
+                    />
                   </a>
                   <a className="mt-3" href="/demo/app/artist/1/details">
                     {item.name}
