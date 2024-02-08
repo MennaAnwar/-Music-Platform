@@ -61,7 +61,7 @@ export default function ArtistsPage() {
               Top <span className="text-primary">Artists</span>
             </h3>
           </div>
-          <div className="row g-4">
+          <div className="d-flex flex-wrap justify-content-center cover row g-4">
             {Images.map((item, index) => (
               <div className="col-6 col-xl-2 col-md-3 col-sm-4 mx-2">
                 <a
