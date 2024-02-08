@@ -107,16 +107,17 @@
   width: 100%;
   border-radius: 6px;
   text-decoration: none;
-  transition: var(--tran-03);
+  color: black;
 }
 
 .sidebar li a:hover,
 .sidebar li a.active {
   background: linear-gradient(
     90deg,
-    rgba(25, 110, 237, 0.1) 0,
+    rgba(25, 110, 237, 0.2) 0,
     rgba(25, 110, 237, 0) 100%
   );
+  color: #196eed;
 }
 
 .sidebar li a:hover .icon,

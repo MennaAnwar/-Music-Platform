@@ -120,8 +120,6 @@ h6 {
 /*==========Common CSS ==========*/
 
 :root {
-  --primary-color: #14c285;
-  --white-color: #ffffff;
   --dark-color: #272727;
   --body-color: #131a59;
   --box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);

@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -14,26 +15,34 @@ const Sidebar = () => {
         <div className="menu">
           <ul className="menu-links p-0 ">
             <li>
-              <a>
-                <i className="bx bx-home-alt icon"></i>
+              <Link>
+                <i className="bx bx-home icon"></i>
                 <span className="text nav-text">Home</span>
-              </a>
+              </Link>
             </li>
             <li>
-              <i className="bx bx-home-alt icon"></i>
-              <span className="text nav-text">Genres</span>
+              <Link>
+                <i class="bx bxl-deezer icon"></i>
+                <span className="text nav-text">Genres</span>
+              </Link>
             </li>
             <li>
-              <i className="bx bx-home-alt icon"></i>
-              <span className="text nav-text">Music</span>
+              <Link>
+                <i class="bx bx-music icon"></i>
+                <span className="text nav-text">Music</span>
+              </Link>
             </li>
             <li>
-              <i className="bx bx-home-alt icon"></i>
-              <span className="text nav-text">Albums</span>
+              <Link>
+                <i class="bx bx-disc icon"></i>
+                <span className="text nav-text">Albums</span>
+              </Link>
             </li>
             <li>
-              <i className="bx bx-home-alt icon"></i>
-              <span className="text nav-text">Artists</span>
+              <Link to="/artists">
+                <i class="bx bx-microphone icon"></i>
+                <span className="text nav-text">Artists</span>
+              </Link>
             </li>
           </ul>
         </div>
