@@ -171,3 +171,7 @@
   margin: 0px;
   transform: translate(-26px, 0px);
 }
+
+.section {
+  margin-bottom: 4rem;
+}

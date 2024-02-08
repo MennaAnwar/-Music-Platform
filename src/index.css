@@ -120,6 +120,16 @@ h6 {
 /*==========Common CSS ==========*/
 
 :root {
+  --primary-color: #14c285;
+  --white-color: #ffffff;
+  --dark-color: #272727;
+  --body-color: #131a59;
+  --box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  --transition: 0.8s cubic-bezier(0.22, 0.78, 0.45, 1.02);
+  --input-color: #14c285;
+  --body-font: "Poppins", sans-serif;
+  --title-font: "Josefin Sans", sans-serif;
+  --primary-overlay-color: 36, 77, 77;
   --hff: "Heebo", sans-serif;
   --bff: "Nunito", sans-serif;
   --tran-03: all 1s ease;
@@ -200,12 +210,6 @@ a:hover {
   background: var(--primary-color);
   opacity: 0.2;
   transition: width 1.2s cubic-bezier(0.215, 0.61, 0.355, 1) 0s;
-}
-
-.section {
-  padding-top: 100px;
-  padding-bottom: 100px;
-  position: relative;
 }
 
 .light-bg {

@@ -1,8 +1,19 @@
+import React, { useState, useEffect } from "react";
+//import axios from "axios";
+//import { useParams } from "react-router-dom";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 import Hero from "../Hero/Hero";
 import "./Artist.css";
 import Song from "./SongItem";
+import { Images } from "../LandingPage/Artists/imgs";
 
 export default function ArtistDetails() {
+  //const { name } = useParams();
+
   return (
     <>
       <Hero />
@@ -37,13 +48,12 @@ export default function ArtistDetails() {
               <ul className="info-list">
                 <li>
                   <a
-                    href="javascript:void(0);"
                     role="button"
                     className="text-dark d-flex align-items-center"
                     aria-label="Favorite"
                     data-favorite-id="1"
                   >
-                    <i class="bx bx-heart"></i>
+                    <i className="bx bx-heart"></i>
                     <span className="ps-2 fw-medium">121</span>
                   </a>
                 </li>
@@ -57,20 +67,61 @@ export default function ArtistDetails() {
             </div>
           </div>
         </div>
-        <div class="section">
-          <div class="section__head">
-            <h3 class="mb-0">
-              Top <span class="text-primary">Songs</span>
+        <div className="section">
+          <div className="section__head">
+            <h3 className="mb-0">
+              Top <span className="text-primary">Songs</span>
             </h3>
           </div>
           <div className="list">
             <div className="row">
-              <div className="col-lg-6">
+              <div className="col-xl-6">
                 <Song />
               </div>
-              <div className="col-lg-6"></div>
+              <div className="col-xl-6">
+                <Song />
+              </div>
             </div>
           </div>
+        </div>
+        <div className="section">
+          <div className="section__head">
+            <h3 className="mb-0">
+              Top <span className="text-primary">Albums</span>
+            </h3>
+          </div>
+          <Swiper
+            slidesPerView={5}
+            spaceBetween={30}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[FreeMode, Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            {Images.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                role="group"
+                aria-label="1 / 10"
+                className="swiper-slide-active"
+              >
+                <div className="d-block text-center">
+                  <a href="/demo/app/artist/1/details">
+                    <img src={item.src} alt={item.name} />
+                  </a>
+                  <a className="mt-3" href="/demo/app/artist/1/details">
+                    {item.name}
+                  </a>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
         </div>
       </div>
     </>
