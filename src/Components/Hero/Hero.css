@@ -3,7 +3,7 @@
   background-position: center;
   height: 20rem;
   position: relative;
-  background-image: url(../../images/music.png);
+  background-image: url(../../images/artists.jpg);
 }
 
 @media (min-width: 576px) {
