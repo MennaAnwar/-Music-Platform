@@ -21,7 +21,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to="/genres">
                 <i className="bx bxl-deezer icon"></i>
                 <span className="text nav-text">Genres</span>
               </Link>
