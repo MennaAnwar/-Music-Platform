@@ -27,7 +27,7 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
-              <Link>
+              <Link to="/music">
                 <i className="bx bx-music icon"></i>
                 <span className="text nav-text">Music</span>
               </Link>

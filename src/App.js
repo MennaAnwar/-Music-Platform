@@ -9,6 +9,7 @@ import Navbar from "./Components/Navbar/Navbar";
 import ArtistDetails from "./Components/ArtistDetails/Artist";
 import ArtistsPage from "./Components/ArtistsPage/ArtistsPage";
 import GenresPage from "./Components/GenresPage/GenresPage";
+import MusicPage from "./Components/MusicPage/MusicPage";
 
 function App() {
   const [sidebar, IsOpen] = useState(false);
@@ -29,6 +30,7 @@ function App() {
           <Route path="/artist/:name" element={<ArtistDetails />} />
           <Route path="/artists" element={<ArtistsPage />} />
           <Route path="/genres" element={<GenresPage />} />
+          <Route path="/music" element={<MusicPage />} />
         </Routes>
       </main>
     </Context.Provider>
