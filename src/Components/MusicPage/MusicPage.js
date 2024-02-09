@@ -1,4 +1,5 @@
 import Song from "../ArtistDetails/SongItem";
+import MusicPlayer from "../MusicPlayer/MusicPlayer";
 import Hero from "./../Hero/Hero";
 
 export default function MusicPage() {
@@ -12,16 +13,7 @@ export default function MusicPage() {
               <span className="text-primary">Songs</span>
             </h3>
           </div>
-          <div className="list">
-            <div className="row">
-              <div className="col-xl-6">
-                <Song />
-              </div>
-              <div className="col-xl-6">
-                <Song />
-              </div>
-            </div>
-          </div>
+          <MusicPlayer />
         </div>
       </div>
     </>

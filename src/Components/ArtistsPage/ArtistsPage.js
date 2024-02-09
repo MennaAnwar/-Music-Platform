@@ -67,13 +67,15 @@ export default function ArtistsPage() {
                 <a
                   key={index}
                   href="artist-details.html"
-                  class="cover cover--round "
+                  className="cover cover--round "
                 >
-                  <div class="cover__image">
+                  <div className="cover__image">
                     <img src={item.src} alt={item.name} />
                   </div>
-                  <div class="cover__foot">
-                    <span class="cover__title text-truncate">A{item.name}</span>
+                  <div className="cover__foot">
+                    <span className="cover__title text-truncate">
+                      A{item.name}
+                    </span>
                   </div>
                 </a>
               </div>
