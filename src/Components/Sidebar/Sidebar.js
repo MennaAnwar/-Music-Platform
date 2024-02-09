@@ -21,6 +21,12 @@ const Sidebar = () => {
               </Link>
             </li>
             <li>
+              <Link to="/playlists">
+                <i class="bx bxs-playlist icon"></i>
+                <span className="text nav-text">My Playlists</span>
+              </Link>
+            </li>
+            <li>
               <Link to="/genres">
                 <i className="bx bxl-deezer icon"></i>
                 <span className="text nav-text">Genres</span>
