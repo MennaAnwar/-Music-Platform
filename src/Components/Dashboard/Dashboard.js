@@ -90,7 +90,7 @@ export default function Dashboard() {
             </h3>
           </div>
           <Swiper
-            slidesPerView={2}
+            slidesPerView={4}
             spaceBetween={30}
             freeMode={true}
             pagination={{
