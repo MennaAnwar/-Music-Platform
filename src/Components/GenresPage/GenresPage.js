@@ -5,15 +5,12 @@ import axios from "axios";
 
 export default function GenresPage() {
   const [genre, setGenre] = useState([]);
+
   useEffect(() => {
     axios.get(`http://localhost:8000/api/genre`).then(function (res) {
       setGenre(res.data.data);
     });
   });
-
-  useEffect(() => {
-    console.log(genre);
-  }, [genre]);
 
   return (
     <>
