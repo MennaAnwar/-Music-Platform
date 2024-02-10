@@ -9,7 +9,6 @@ import "swiper/css/pagination";
 import Hero from "../Hero/Hero";
 import "./Artist.css";
 import Song from "./SongItem";
-import { Images } from "../LandingPage/Artists/imgs";
 
 export default function ArtistDetails() {
   const { name } = useParams();
