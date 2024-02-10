@@ -1,6 +1,12 @@
 import "./Dashboard.css";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import Hero from "../Hero/Hero";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { FreeMode, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/free-mode";
+import "swiper/css/pagination";
 
 export default function Dashboard() {
   const [albums, setAlbums] = useState([]);
@@ -11,11 +17,12 @@ export default function Dashboard() {
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/chart`).then(function (res) {
-      setAlbums(res.data.albums);
-      setArtists(res.data.artists);
-      setPlaylists(res.data.playlists);
-      setPodcasts(res.data.podcasts);
-      setTracks(res.data.tracks);
+      setAlbums(res.data.albums.data);
+      setArtists(res.data.artists.data);
+      setPlaylists(res.data.playlists.data);
+      setPodcasts(res.data.podcasts.data);
+      setTracks(res.data.tracks.data);
+      console.log(res.data);
     });
   });
 
@@ -26,5 +33,226 @@ export default function Dashboard() {
     console.log(tracks);
   }, [artists, playlists, podcasts, tracks, albums]);
 
-  return <h1>Home Page</h1>;
+  return (
+    <>
+      <Hero />
+      <div className="under-hero container">
+        <div className="section">
+          <div className="section__head">
+            <h3 className="mb-0">
+              Top <span className="text-primary">Artists</span>
+            </h3>
+          </div>
+          <Swiper
+            slidesPerView={5}
+            spaceBetween={30}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[FreeMode, Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            {artists.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                role="group"
+                aria-label="1 / 10"
+                className="swiper-slide-active"
+              >
+                <div className="d-block text-center">
+                  <a href="/demo/app/artist/1/details">
+                    <img
+                      src={item.picture}
+                      alt={item.name}
+                      className="avatar__image"
+                    />
+                  </a>
+                  <a className="mt-3" href="/demo/app/artist/1/details">
+                    {item.name}
+                  </a>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="section">
+          <div className="section__head">
+            <h3 className="mb-0">
+              Top <span className="text-primary">Albums</span>
+            </h3>
+          </div>
+          <Swiper
+            slidesPerView={2}
+            spaceBetween={30}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[FreeMode, Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            {albums.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                role="group"
+                aria-label="1 / 10"
+                className="swiper-slide-active"
+              >
+                <div className="d-block text-center">
+                  <a href="/demo/app/artist/1/details">
+                    <img
+                      src={item.cover}
+                      alt={item.title}
+                      className="avatar__image"
+                    />
+                  </a>
+                  <a className="mt-3" href="/demo/app/artist/1/details">
+                    {item.title}
+                  </a>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="section">
+          <div className="section__head">
+            <h3 className="mb-0">
+              Top <span className="text-primary">Playlists</span>
+            </h3>
+          </div>
+          <Swiper
+            slidesPerView={4}
+            spaceBetween={30}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[FreeMode, Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            {playlists.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                role="group"
+                aria-label="1 / 10"
+                className="swiper-slide-active"
+              >
+                <div className="d-block text-center">
+                  <a href="/demo/app/artist/1/details">
+                    <img
+                      src={item.picture}
+                      alt={item.title}
+                      className="avatar__image"
+                    />
+                  </a>
+                  <a className="mt-3" href="/demo/app/artist/1/details">
+                    {item.title}
+                  </a>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="section">
+          <div className="section__head">
+            <h3 className="mb-0">
+              <span className="text-primary">Podcasts</span>
+            </h3>
+          </div>
+          <Swiper
+            slidesPerView={4}
+            spaceBetween={30}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[FreeMode, Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            {podcasts.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                role="group"
+                aria-label="1 / 10"
+                className="swiper-slide-active"
+              >
+                <div className="d-block text-center">
+                  <a href="/demo/app/artist/1/details">
+                    <img
+                      src={item.picture}
+                      alt={item.title}
+                      className="avatar__image"
+                    />
+                  </a>
+                  <a className="mt-3" href="/demo/app/artist/1/details">
+                    {item.title}
+                  </a>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+        <div className="section">
+          <div className="section__head">
+            <h3 className="mb-0">
+              <span className="text-primary">Podcasts</span>
+            </h3>
+          </div>
+          <Swiper
+            slidesPerView={4}
+            spaceBetween={30}
+            freeMode={true}
+            pagination={{
+              clickable: true,
+            }}
+            autoplay={{
+              delay: 2500,
+              disableOnInteraction: false,
+            }}
+            modules={[FreeMode, Pagination, Autoplay]}
+            className="mySwiper"
+          >
+            {tracks.map((item, index) => (
+              <SwiperSlide
+                key={index}
+                role="group"
+                aria-label="1 / 10"
+                className="swiper-slide-active"
+              >
+                <div className="d-block text-center">
+                  <a href="/demo/app/artist/1/details">
+                    <img
+                      src={item.album.cover}
+                      alt={item.title}
+                      className="avatar__image"
+                    />
+                  </a>
+                  <a className="mt-3" href="/demo/app/artist/1/details">
+                    {item.title}
+                  </a>
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
+      </div>
+    </>
+  );
 }
