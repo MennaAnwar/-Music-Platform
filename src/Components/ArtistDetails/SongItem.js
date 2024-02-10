@@ -1,7 +1,7 @@
 import "./Artist.css";
 import { useState } from "react";
 
-export default function Song() {
+export default function Song({ cover, preview, title }) {
   const [show, setShow] = useState(false);
 
   const handleClick = () => {
@@ -19,7 +19,7 @@ export default function Song() {
       data-song-cover="images/cover/small/1.jpg"
     >
       <div className="list__cover">
-        <img src="images/cover/small/1.jpg" alt="I love you mummy" />
+        <img src={cover} alt={title} />
         <a
           className="btn btn-play btn-sm btn-default btn-icon rounded-pill"
           data-play-id="1"
@@ -31,11 +31,9 @@ export default function Song() {
       </div>
       <div className="list__content">
         <a href="song-details.html" className="list__title text-truncate">
-          I love you mummy
+          {title}
+          <audio controls src={preview}></audio>
         </a>
-        <p className="list__subtitle text-truncate">
-          <a href="artist-details.html">Arebica Luna</a>
-        </p>
       </div>
       <ul className="list__option">
         <li>
@@ -48,7 +46,6 @@ export default function Song() {
             <i className="bx bx-heart"></i>
           </a>
         </li>
-        <li>01:14</li>
         <li className="dropstart d-inline-flex" onClick={handleClick}>
           <a
             className="dropdown-link"

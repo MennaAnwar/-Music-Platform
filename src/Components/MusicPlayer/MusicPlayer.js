@@ -70,7 +70,7 @@ export default function MusicPlayer() {
                         data-id="1"
                         className="music-controls-item play play_btn"
                       >
-                        <i class="bx bx-play music-controls-item--icon play-icon"></i>
+                        <i className="bx bx-play music-controls-item--icon play-icon"></i>
                         <div className="play-icon-background"></div>
                       </div>
                     </div>
@@ -96,7 +96,7 @@ export default function MusicPlayer() {
                         data-id="2"
                         className="music-controls-item play play_btn"
                       >
-                        <i class="bx bx-play music-controls-item--icon play-icon"></i>
+                        <i className="bx bx-play music-controls-item--icon play-icon"></i>
 
                         <div className="play-icon-background"></div>
                       </div>
@@ -120,7 +120,7 @@ export default function MusicPlayer() {
                     </div>
                     <div className="music_controls">
                       <div data-id="3" className="music-controls-item play_btn">
-                        <i class="bx bx-play music-controls-item--icon play-icon"></i>
+                        <i className="bx bx-play music-controls-item--icon play-icon"></i>
 
                         <div className="play-icon-background"></div>
                       </div>
@@ -144,7 +144,7 @@ export default function MusicPlayer() {
                     </div>
                     <div className="music_controls">
                       <div data-id="0" className="music-controls-item play_btn">
-                        <i class="bx bx-play music-controls-item--icon play-icon"></i>
+                        <i className="bx bx-play music-controls-item--icon play-icon"></i>
                         <div className="play-icon-background"></div>
                       </div>
                     </div>
@@ -170,7 +170,7 @@ export default function MusicPlayer() {
                         data-id="4"
                         className="music-controls-item play play_btn"
                       >
-                        <i class="bx bx-play music-controls-item--icon play-icon"></i>
+                        <i className="bx bx-play music-controls-item--icon play-icon"></i>
 
                         <div className="play-icon-background"></div>
                       </div>
@@ -197,7 +197,7 @@ export default function MusicPlayer() {
                         data-id="5"
                         className="music-controls-item play pause_btn"
                       >
-                        <i class="bx bx-play music-controls-item--icon play-icon"></i>
+                        <i className="bx bx-play music-controls-item--icon play-icon"></i>
 
                         <div className="play-icon-background"></div>
                       </div>

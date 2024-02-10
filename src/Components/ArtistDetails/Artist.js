@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from "react";
-//import axios from "axios";
-//import { useParams } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
@@ -12,7 +12,31 @@ import Song from "./SongItem";
 import { Images } from "../LandingPage/Artists/imgs";
 
 export default function ArtistDetails() {
-  //const { name } = useParams();
+  const { name } = useParams();
+  const [artist, setArtist] = useState([]);
+  const [TrackList, setTrackList] = useState([]);
+  const [albums, setAlbums] = useState([]);
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:8000/api/artist`, {
+        params: {
+          artist: name,
+        },
+      })
+      .then(function (res) {
+        console.log(res.data);
+        setArtist(res.data.artist);
+        setTrackList(res.data.tracks.data);
+        setAlbums(res.data.albums.data);
+      });
+  }, []);
+
+  useEffect(() => {
+    console.log(artist);
+    console.log(TrackList);
+    console.log(albums);
+  }, [artist, TrackList, albums]);
 
   return (
     <>
@@ -23,7 +47,7 @@ export default function ArtistDetails() {
             <div className="col-xl-3 col-md-4">
               <div className="cover cover--round">
                 <div className="cover__image">
-                  <img src="images/cover/large/8.jpg" alt="Karen Jennings" />
+                  <img src={artist.picture} alt={artist.name} />
                 </div>
               </div>
             </div>
@@ -31,20 +55,10 @@ export default function ArtistDetails() {
             <div className="col-md-8 mt-5 mt-md-0">
               <div className="d-flex flex-wrap mb-2">
                 <span className="text-dark fs-4 fw-semi-bold pe-2">
-                  Karen Jennings
+                  {artist.name}
                 </span>
               </div>
-              <ul className="info-list info-list--dotted mb-3">
-                <li>10 Album</li>
-                <li>245 Songs</li>
-                <li>Apr 1, 1990</li>
-              </ul>
-              <p className="mb-5">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit.
-                Voluptatibus iste fugit voluptatum dolorem assumenda deleniti,
-                mollitia culpa facere. Velit nisi quidem nesciunt quae veritatis
-                possimus cupiditate placeat officiis ab modi!
-              </p>
+
               <ul className="info-list">
                 <li>
                   <a
@@ -53,14 +67,16 @@ export default function ArtistDetails() {
                     aria-label="Favorite"
                     data-favorite-id="1"
                   >
-                    <i className="bx bx-heart"></i>
-                    <span className="ps-2 fw-medium">121</span>
+                    <i className="bx bx-album"></i>
+                    <span className="ps-2 fw-medium">
+                      {artist.nb_album} Album
+                    </span>
                   </a>
                 </li>
                 <li>
                   <span className="text-dark d-flex align-items-center">
-                    <i className="bx bxs-star text-warning"></i>{" "}
-                    <span className="ps-2 fw-medium">4.5</span>
+                    <i className="bx bx-heart"></i>
+                    <span className="ps-2 fw-medium">{artist.nb_fan} Fans</span>
                   </span>
                 </li>
               </ul>
@@ -75,12 +91,15 @@ export default function ArtistDetails() {
           </div>
           <div className="list">
             <div className="row">
-              <div className="col-xl-6">
-                <Song />
-              </div>
-              <div className="col-xl-6">
-                <Song />
-              </div>
+              {TrackList.map((track, index) => (
+                <div key={index} className="col-xl-6">
+                  <Song
+                    cover={track.album.cover}
+                    title={track.title}
+                    preview={track.preview}
+                  />
+                </div>
+              ))}
             </div>
           </div>
         </div>
@@ -104,7 +123,7 @@ export default function ArtistDetails() {
             modules={[FreeMode, Pagination, Autoplay]}
             className="mySwiper"
           >
-            {Images.map((item, index) => (
+            {albums.map((item, index) => (
               <SwiperSlide
                 key={index}
                 role="group"
@@ -114,13 +133,13 @@ export default function ArtistDetails() {
                 <div className="d-block text-center">
                   <a href="/demo/app/artist/1/details">
                     <img
-                      src={item.src}
-                      alt={item.name}
+                      src={item.cover}
+                      alt={item.title}
                       className="avatar__image"
                     />
                   </a>
                   <a className="mt-3" href="/demo/app/artist/1/details">
-                    {item.name}
+                    {item.title}
                   </a>
                 </div>
               </SwiperSlide>

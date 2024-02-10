@@ -22,7 +22,7 @@ const Sidebar = () => {
             </li>
             <li>
               <Link to="/playlists">
-                <i class="bx bxs-playlist icon"></i>
+                <i className="bx bxs-playlist icon"></i>
                 <span className="text nav-text">My Playlists</span>
               </Link>
             </li>
