@@ -73,6 +73,8 @@ export default function Dashboard() {
                       className="avatar__image"
                     />
                   </Link>
+                </div>
+                <div className="d-block text-center">
                   <Link className="mt-3" to={`/artist/${item.id}`}>
                     {item.name}
                   </Link>
@@ -116,6 +118,8 @@ export default function Dashboard() {
                       className="avatar__image"
                     />
                   </a>
+                </div>
+                <div className="d-block text-center">
                   <a className="mt-3" href="/demo/app/artist/1/details">
                     {item.title}
                   </a>
@@ -159,6 +163,8 @@ export default function Dashboard() {
                       className="avatar__image"
                     />
                   </a>
+                </div>
+                <div className="d-block text-center">
                   <a className="mt-3" href="/demo/app/artist/1/details">
                     {item.title}
                   </a>
@@ -202,6 +208,8 @@ export default function Dashboard() {
                       className="avatar__image"
                     />
                   </a>
+                </div>
+                <div className="d-block text-center">
                   <a className="mt-3" href="/demo/app/artist/1/details">
                     {item.title}
                   </a>
@@ -245,6 +253,8 @@ export default function Dashboard() {
                       className="avatar__image"
                     />
                   </a>
+                </div>
+                <div className="d-block text-center">
                   <a className="mt-3" href="/demo/app/artist/1/details">
                     {item.title}
                   </a>

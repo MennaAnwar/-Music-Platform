@@ -126,20 +126,34 @@ export default function ArtistDetails() {
               <SwiperSlide
                 key={index}
                 role="group"
-                aria-label="1 / 10"
+                aria-label={`${index + 1} / 10`}
                 className="swiper-slide-active"
               >
                 <div className="d-block text-center">
-                  <a href="/demo/app/artist/1/details">
+                  <a
+                    href="/demo/app/artist/1/details"
+                    style={{ display: "inline-block", marginBottom: "10px" }}
+                  >
                     <img
                       src={item.cover}
                       alt={item.title}
                       className="avatar__image"
+                      style={{ maxWidth: "100%", height: "auto" }}
                     />
                   </a>
-                  <a className="mt-3" href="/demo/app/artist/1/details">
-                    {item.title}
-                  </a>
+                  <div className="d-block text-center">
+                    <a
+                      className="mt-3"
+                      href="/demo/app/artist/1/details"
+                      style={{
+                        display: "block",
+                        color: "#000",
+                        textDecoration: "none",
+                      }}
+                    >
+                      {item.title}
+                    </a>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
