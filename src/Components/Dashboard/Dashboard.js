@@ -7,6 +7,7 @@ import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
+import { Link } from "react-router-dom";
 
 export default function Dashboard() {
   const [albums, setAlbums] = useState([]);
@@ -65,16 +66,16 @@ export default function Dashboard() {
                 className="swiper-slide-active"
               >
                 <div className="d-block text-center">
-                  <a href="/demo/app/artist/1/details">
+                  <Link to={`/artist/${item.id}`}>
                     <img
                       src={item.picture}
                       alt={item.name}
                       className="avatar__image"
                     />
-                  </a>
-                  <a className="mt-3" href="/demo/app/artist/1/details">
+                  </Link>
+                  <Link className="mt-3" to={`/artist/${item.id}`}>
                     {item.name}
-                  </a>
+                  </Link>
                 </div>
               </SwiperSlide>
             ))}
@@ -212,7 +213,7 @@ export default function Dashboard() {
         <div className="section">
           <div className="section__head">
             <h3 className="mb-0">
-              <span className="text-primary">Podcasts</span>
+              Top <span className="text-primary">Tracks</span>
             </h3>
           </div>
           <Swiper
