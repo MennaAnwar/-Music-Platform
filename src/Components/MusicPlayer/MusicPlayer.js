@@ -49,13 +49,14 @@ export default function MusicPlayer({ songs }) {
             </div>
           </div>
           <div className="col-xl-8 col-lg-12">
-            <div className="music-list-row">
+            <div className="music-list-row list">
               {songs.map((item, index) => (
                 <Song
                   key={index}
                   cover={item.album.cover}
                   title={item.title}
                   preview={item.preview}
+                  name={item.artist.name}
                 />
               ))}
             </div>

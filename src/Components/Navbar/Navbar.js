@@ -15,10 +15,10 @@ const Navbar = () => {
       <div className="container">
         <div className="header-container">
           <div className="d-flex bd-highlight align-items-center">
-            <div className="p-2 bd-highlight d-lg-none">
+            <div className="p-2 bd-highlight d-xl-none">
               <CircleBtn clickHandler={OpenSidebar} active={sidebar} />
             </div>
-            <div className="p-2 bd-highlight logo d-lg-none">
+            <div className="p-2 bd-highlight logo d-xl-none">
               <h3 className="m-0">LOGO</h3>
             </div>
             <div className="ms-auto p-2 bd-highlight d-flex align-items-center">

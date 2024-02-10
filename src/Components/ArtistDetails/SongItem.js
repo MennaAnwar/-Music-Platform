@@ -1,7 +1,7 @@
 import "./Artist.css";
 import { useState } from "react";
 
-export default function Song({ cover, preview, title }) {
+export default function Song({ cover, preview, title, name }) {
   const [show, setShow] = useState(false);
 
   const handleClick = () => {
@@ -9,31 +9,18 @@ export default function Song({ cover, preview, title }) {
   };
 
   return (
-    <div
-      className="list__item  d-flex justify-content-between align-items-center"
-      data-song-id="1"
-      data-song-name="I love you mummy"
-      data-song-artist="Arebica Luna"
-      data-song-album="Mummy"
-      data-song-url="audio/ringtone-1.mp3"
-      data-song-cover="images/cover/small/1.jpg"
-    >
+    <div className="list__item  d-flex justify-content-between align-items-center">
       <div className="list__cover">
-        <img src={cover} alt={title} />
-        <a
-          className="btn btn-play btn-sm btn-default btn-icon rounded-pill"
-          data-play-id="1"
-          aria-label="Play pause"
-        >
-          <i className="ri-play-fill icon-play"></i>
-          <i className="ri-pause-fill icon-pause"></i>
-        </a>
+        <div className="d-flex justify-content-between align-items-center">
+          <img src={cover} alt={title} />
+        </div>
+        <div className="btn btn-play btn-sm btn-default btn-icon rounded-pill">
+          <i className="play bx bx-play icon-play"></i>
+        </div>
       </div>
       <div className="list__content">
-        <a href="song-details.html" className="list__title text-truncate">
-          {title}
-          <audio controls src={preview}></audio>
-        </a>
+        <span className="list__title text-truncate">{title}</span>
+        <p class="list__subtitle text-truncate">{name}</p>
       </div>
       <ul className="list__option d-flex">
         <li>
