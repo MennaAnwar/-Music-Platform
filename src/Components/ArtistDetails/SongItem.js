@@ -10,7 +10,7 @@ export default function Song({ cover, preview, title }) {
 
   return (
     <div
-      className="list__item"
+      className="list__item  d-flex justify-content-between align-items-center"
       data-song-id="1"
       data-song-name="I love you mummy"
       data-song-artist="Arebica Luna"
@@ -35,7 +35,7 @@ export default function Song({ cover, preview, title }) {
           <audio controls src={preview}></audio>
         </a>
       </div>
-      <ul className="list__option">
+      <ul className="list__option d-flex">
         <li>
           <a
             role="button"
