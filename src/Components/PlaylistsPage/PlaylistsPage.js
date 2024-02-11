@@ -29,23 +29,27 @@ export default function PlaylistsPage() {
       showCancelButton: true,
       confirmButtonText: "Create",
       showLoaderOnConfirm: true,
-      preConfirm: async (login) => {
-        try {
-          const githubUrl = `
-        https://api.github.com/users/${login}
-      `;
-          const response = await fetch(githubUrl);
-          if (!response.ok) {
-            return Swal.showValidationMessage(`
-          ${JSON.stringify(await response.json())}
-        `);
-          }
-          return response.json();
-        } catch (error) {
-          Swal.showValidationMessage(`
-        Request failed: ${error}
-      `);
-        }
+      preConfirm: (playlistName) => {
+        return axios
+          .post(`http://localhost:8000/api/playlists`, { name: playlistName })
+          .then((response) => {
+            if (response.status !== 200 && response.status !== 201) {
+              throw new Error(response.statusText);
+            }
+            console.log(response.data);
+            return response.data;
+          })
+          .catch((error) => {
+            if (error.response) {
+              Swal.showValidationMessage(
+                `Request failed: ${error.response.data}`
+              );
+            } else if (error.request) {
+              Swal.showValidationMessage(`Request failed: ${error.request}`);
+            } else {
+              Swal.showValidationMessage(`Error: ${error.message}`);
+            }
+          });
       },
       allowOutsideClick: () => !Swal.isLoading(),
     }).then((result) => {
