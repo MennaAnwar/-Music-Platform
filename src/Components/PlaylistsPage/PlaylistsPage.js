@@ -24,7 +24,7 @@ export default function PlaylistsPage() {
       setMyPlaylists(res.data);
       console.log(res.data);
     });
-  }, []);
+  }, [my_playlists]);
 
   const handleClick = () => {
     Swal.fire({
@@ -88,6 +88,37 @@ export default function PlaylistsPage() {
     console.log(id);
   };
 
+  const Delete = (id) => {
+    console.log(id);
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:8000/api/deletePlaylist`, {
+            params: { playlistId: id },
+          })
+          .then((res) => {
+            setMyPlaylists(res.data.remainingPlaylists);
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          })
+          .catch((error) => {
+            console.error("Deletion error:", error);
+          });
+      }
+    });
+  };
+
   return (
     <>
       <Hero />
@@ -129,20 +160,10 @@ export default function PlaylistsPage() {
                     dropdownVisibility[item.id] ? " show" : ""
                   }`}
                 >
-                  <li>
-                    <a className="dropdown-item" role="button">
-                      view
-                    </a>
-                  </li>
+                  <li className="dropdown-item">view</li>
                   <li className="dropdown-divider"></li>
-                  <li>
-                    <a
-                      className="dropdown-item text-danger"
-                      role="button"
-                      data-play-id="1"
-                    >
-                      delete
-                    </a>
+                  <li className="dropdown-item" onClick={() => Delete(item.id)}>
+                    delete
                   </li>
                 </ul>
               </div>
