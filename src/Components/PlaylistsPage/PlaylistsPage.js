@@ -88,7 +88,6 @@ export default function PlaylistsPage() {
             <div
               key={index}
               className="music-list-box wow right-animation mb-5"
-              onClick={() => show(item.id)}
             >
               <div className="music-list-image">
                 <div className="back-img"></div>
@@ -97,6 +96,36 @@ export default function PlaylistsPage() {
                 <div className="music-info">
                   <h2 className="music-name">{item.name}</h2>
                 </div>
+              </div>
+              <div className="dropstart d-inline-flex">
+                <a
+                  className="dropdown-link"
+                  role="button"
+                  data-bs-toggle="dropdown"
+                  aria-label="Cover options"
+                  aria-expanded="false"
+                >
+                  <i className="bx bx-dots-horizontal-rounded"></i>
+                </a>
+                <ul
+                  className={`dropdown-menu dropdown-menu-sm${show ? "" : ""}`}
+                >
+                  <li>
+                    <a
+                      className="dropdown-item"
+                      role="button"
+                      data-playlist-id="1"
+                    >
+                      Add to playlist
+                    </a>
+                  </li>
+                  <li className="dropdown-divider"></li>
+                  <li>
+                    <a className="dropdown-item" role="button" data-play-id="1">
+                      Play
+                    </a>
+                  </li>
+                </ul>
               </div>
             </div>
           ))}
