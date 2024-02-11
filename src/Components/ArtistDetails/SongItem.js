@@ -20,7 +20,7 @@ export default function Song({ cover, preview, title, name }) {
       </div>
       <div className="list__content">
         <span className="list__title text-truncate">{title}</span>
-        <p class="list__subtitle text-truncate">{name}</p>
+        <p className="list__subtitle text-truncate">{name}</p>
       </div>
       <ul className="list__option d-flex">
         <li>

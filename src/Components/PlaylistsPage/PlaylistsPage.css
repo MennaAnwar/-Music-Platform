@@ -3,3 +3,36 @@
   border-radius: 20px;
   padding: 20px;
 }
+
+.addNew {
+  font-size: xxx-large;
+  color: #ced4da;
+}
+
+@media (max-width: 1199px) {
+  .music-list-box {
+    padding: 15px 3em 15px 15px;
+  }
+}
+.music-list-box {
+  padding: 30px 4em 30px 30px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  border-radius: 20px;
+  z-index: 2;
+  box-shadow: 10px 10px 19px #ced4da, -10px -10px 19px #ced4da;
+}
+
+.music-list-box:after {
+  content: "♫";
+  display: block;
+  position: absolute;
+  top: 45%;
+  right: -25px;
+  transform: translateY(-50%);
+  font-size: 15em;
+  z-index: 0;
+  opacity: 0.1;
+}

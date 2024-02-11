@@ -11,10 +11,16 @@ import Swal from "sweetalert2";
 
 export default function PlaylistsPage() {
   const [playlists, setPlaylists] = useState([]);
+  const [my_playlists, setMyPlaylists] = useState([]);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/chart`).then(function (res) {
       setPlaylists(res.data.playlists.data);
+      console.log(res.data);
+    });
+
+    axios.get(`http://localhost:8000/api/playlists`).then(function (res) {
+      setMyPlaylists(res.data);
       console.log(res.data);
     });
   });
@@ -36,7 +42,7 @@ export default function PlaylistsPage() {
             if (response.status !== 200 && response.status !== 201) {
               throw new Error(response.statusText);
             }
-            console.log(response.data);
+            setMyPlaylists(response.data);
             return response.data;
           })
           .catch((error) => {
@@ -64,6 +70,10 @@ export default function PlaylistsPage() {
     });
   };
 
+  const show = (id) => {
+    console.log(id);
+  };
+
   return (
     <>
       <Hero />
@@ -73,9 +83,36 @@ export default function PlaylistsPage() {
             My <span className="text-primary">Playlists</span>
           </h3>
         </div>
-        <div className="myplaylists d-flex flex-wrap">
-          <div className="createPlaylist" onClick={handleClick}>
-            + New Playlist
+        <div className="myplaylists d-flex flex-wrap justify-content-evenly">
+          {my_playlists.map((item, index) => (
+            <div
+              key={index}
+              className="music-list-box wow right-animation mb-5"
+              onClick={() => show(item.id)}
+            >
+              <div className="music-list-image">
+                <div className="back-img"></div>
+              </div>
+              <div className="music-list-info">
+                <div className="music-info">
+                  <h2 className="music-name">{item.name}</h2>
+                </div>
+              </div>
+            </div>
+          ))}
+
+          <div
+            className="music-list-box wow right-animation mb-5"
+            onClick={handleClick}
+          >
+            <div className="music-list-image">
+              <div className="back-img"></div>
+            </div>
+            <div className="music-list-info">
+              <div className="music-info">
+                <h2 className="music-name">+ New Playlist</h2>
+              </div>
+            </div>
           </div>
         </div>
       </div>
