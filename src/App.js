@@ -10,6 +10,7 @@ import ArtistDetails from "./Components/ArtistDetails/Artist";
 import ArtistsPage from "./Components/ArtistsPage/ArtistsPage";
 import GenresPage from "./Components/GenresPage/GenresPage";
 import MusicPage from "./Components/MusicPage/MusicPage";
+import PlaylistsPage from "./Components/PlaylistsPage/PlaylistsPage";
 
 function App() {
   const [sidebar, IsOpen] = useState(false);
@@ -31,6 +32,7 @@ function App() {
           <Route path="/artists" element={<ArtistsPage />} />
           <Route path="/genres" element={<GenresPage />} />
           <Route path="/music" element={<MusicPage />} />
+          <Route path="/playlists" element={<PlaylistsPage />} />
         </Routes>
       </main>
     </Context.Provider>
