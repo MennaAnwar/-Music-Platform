@@ -25,7 +25,7 @@ export default function Dashboard() {
       setTracks(res.data.tracks.data);
       console.log(res.data);
     });
-  });
+  }, []);
 
   useEffect(() => {
     console.log(artists);

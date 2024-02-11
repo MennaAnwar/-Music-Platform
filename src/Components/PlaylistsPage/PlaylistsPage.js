@@ -23,7 +23,7 @@ export default function PlaylistsPage() {
       setMyPlaylists(res.data);
       console.log(res.data);
     });
-  });
+  }, []);
 
   const handleClick = () => {
     Swal.fire({

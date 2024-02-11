@@ -10,7 +10,7 @@ export default function GenresPage() {
     axios.get(`http://localhost:8000/api/genre`).then(function (res) {
       setGenre(res.data.data);
     });
-  });
+  }, []);
 
   return (
     <>

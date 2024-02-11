@@ -18,7 +18,7 @@ export default function ArtistsPage() {
       setArtists(res.data.artists.data);
       console.log(res.data);
     });
-  });
+  }, []);
 
   useEffect(() => {
     console.log(artists);
