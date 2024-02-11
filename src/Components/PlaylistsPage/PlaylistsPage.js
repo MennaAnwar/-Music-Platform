@@ -12,6 +12,7 @@ import Swal from "sweetalert2";
 export default function PlaylistsPage() {
   const [playlists, setPlaylists] = useState([]);
   const [my_playlists, setMyPlaylists] = useState([]);
+  const [dropdownVisibility, setDropdownVisibility] = useState({});
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/chart`).then(function (res) {
@@ -70,7 +71,20 @@ export default function PlaylistsPage() {
     });
   };
 
-  const show = (id) => {
+  const toggleDropdown = (id) => {
+    setDropdownVisibility((prev) => {
+      const newState = Object.keys(prev).reduce((acc, key) => {
+        acc[key] = false;
+        return acc;
+      }, {});
+
+      newState[id] = !prev[id];
+
+      return newState;
+    });
+  };
+
+  const showPlaylist = (id) => {
     console.log(id);
   };
 
@@ -97,7 +111,10 @@ export default function PlaylistsPage() {
                   <h2 className="music-name">{item.name}</h2>
                 </div>
               </div>
-              <div className="dropstart d-inline-flex">
+              <div
+                className="dropstart more d-inline-flex "
+                onClick={() => toggleDropdown(item.id)}
+              >
                 <a
                   className="dropdown-link"
                   role="button"
@@ -108,7 +125,9 @@ export default function PlaylistsPage() {
                   <i className="bx bx-dots-horizontal-rounded"></i>
                 </a>
                 <ul
-                  className={`dropdown-menu dropdown-menu-sm${show ? "" : ""}`}
+                  className={`dropdown-menu dropdown-menu-sm${
+                    dropdownVisibility[item.id] ? " show" : ""
+                  }`}
                 >
                   <li>
                     <a
