@@ -1,11 +1,9 @@
 import "./Artist.css";
 import { useState } from "react";
 
-export default function Song({ cover, preview, title, name }) {
-  const [show, setShow] = useState(false);
-
-  const handleClick = () => {
-    setShow((show) => !show);
+export default function Song({ cover, preview, title, name, id }) {
+  const handleClick = (id) => {
+    console.log(id);
   };
 
   return (
@@ -33,7 +31,7 @@ export default function Song({ cover, preview, title, name }) {
             <i className="bx bx-heart"></i>
           </a>
         </li>
-        <li className="dropstart d-inline-flex" onClick={handleClick}>
+        <li className="dropstart d-inline-flex" onClick={() => handleClick(id)}>
           <a
             className="dropdown-link"
             role="button"
@@ -41,23 +39,8 @@ export default function Song({ cover, preview, title, name }) {
             aria-label="Cover options"
             aria-expanded="false"
           >
-            <i className="bx bx-dots-horizontal-rounded"></i>
+            <i class="bx bx-list-plus"></i>
           </a>
-          <ul
-            className={`dropdown-menu dropdown-menu-sm${show ? " show" : ""}`}
-          >
-            <li>
-              <a className="dropdown-item" role="button" data-playlist-id="1">
-                Add to playlist
-              </a>
-            </li>
-            <li className="dropdown-divider"></li>
-            <li>
-              <a className="dropdown-item" role="button" data-play-id="1">
-                Play
-              </a>
-            </li>
-          </ul>
         </li>
       </ul>
     </div>

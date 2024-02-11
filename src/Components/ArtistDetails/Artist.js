@@ -96,6 +96,7 @@ export default function ArtistDetails() {
                     cover={track.album.cover}
                     title={track.title}
                     preview={track.preview}
+                    id={track.id}
                   />
                 </div>
               ))}

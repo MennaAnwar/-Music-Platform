@@ -130,18 +130,18 @@ export default function PlaylistsPage() {
                   }`}
                 >
                   <li>
-                    <a
-                      className="dropdown-item"
-                      role="button"
-                      data-playlist-id="1"
-                    >
-                      Add to playlist
+                    <a className="dropdown-item" role="button">
+                      view
                     </a>
                   </li>
                   <li className="dropdown-divider"></li>
                   <li>
-                    <a className="dropdown-item" role="button" data-play-id="1">
-                      Play
+                    <a
+                      className="dropdown-item text-danger"
+                      role="button"
+                      data-play-id="1"
+                    >
+                      delete
                     </a>
                   </li>
                 </ul>

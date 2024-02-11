@@ -57,6 +57,7 @@ export default function MusicPlayer({ songs }) {
                   title={item.title}
                   preview={item.preview}
                   name={item.artist.name}
+                  id={item.id}
                 />
               ))}
             </div>
