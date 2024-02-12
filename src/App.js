@@ -11,6 +11,7 @@ import ArtistsPage from "./Components/ArtistsPage/ArtistsPage";
 import GenresPage from "./Components/GenresPage/GenresPage";
 import MusicPage from "./Components/MusicPage/MusicPage";
 import PlaylistsPage from "./Components/PlaylistsPage/PlaylistsPage";
+import PlaylistDetails from "./Components/PlaylistDetails/PlaylistDetails";
 
 function App() {
   const [sidebar, IsOpen] = useState(false);
@@ -33,6 +34,7 @@ function App() {
           <Route path="/genres" element={<GenresPage />} />
           <Route path="/music" element={<MusicPage />} />
           <Route path="/playlists" element={<PlaylistsPage />} />
+          <Route path="/playlist/:id" element={<PlaylistDetails />} />
         </Routes>
       </main>
     </Context.Provider>

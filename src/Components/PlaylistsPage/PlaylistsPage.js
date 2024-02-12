@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import Swal from "sweetalert2";
+import { Link } from "react-router-dom";
 
 export default function PlaylistsPage() {
   const [playlists, setPlaylists] = useState([]);
@@ -24,7 +25,7 @@ export default function PlaylistsPage() {
       setMyPlaylists(res.data);
       console.log(res.data);
     });
-  }, [my_playlists]);
+  }, [my_playlists, playlists]);
 
   const handleClick = () => {
     Swal.fire({
@@ -82,10 +83,6 @@ export default function PlaylistsPage() {
 
       return newState;
     });
-  };
-
-  const showPlaylist = (id) => {
-    console.log(id);
   };
 
   const Delete = (id) => {
@@ -160,7 +157,9 @@ export default function PlaylistsPage() {
                     dropdownVisibility[item.id] ? " show" : ""
                   }`}
                 >
-                  <li className="dropdown-item">view</li>
+                  <li className="dropdown-item">
+                    <Link to={`/playlist/${item.id}`}>view</Link>
+                  </li>
                   <li className="dropdown-divider"></li>
                   <li className="dropdown-item" onClick={() => Delete(item.id)}>
                     delete

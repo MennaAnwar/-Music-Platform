@@ -44,7 +44,7 @@ export default function MusicPage() {
               <i className="bx bx-search icon3"></i>
             </div>
           </div>
-          <MusicPlayer songs={songs} />
+          <MusicPlayer songs={songs} action="add" icon="list-plus" />
         </div>
       </div>
     </>

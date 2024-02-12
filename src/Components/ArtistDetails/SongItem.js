@@ -1,16 +1,25 @@
 import axios from "axios";
 import "./Artist.css";
-import { useState } from "react";
 import Swal from "sweetalert2";
+import { useParams } from "react-router-dom";
 
-export default function Song({ cover, preview, title, name, id }) {
-  const [my_playlists, setMyPlaylists] = useState([]);
+export default function Song({
+  cover,
+  preview,
+  title,
+  name,
+  song_id,
+  icon,
+  action,
+}) {
+  const { id } = useParams();
 
-  const handleClick = async (id) => {
-    console.log(id);
+  const handleClick = async (song_id) => {
     axios.get(`http://localhost:8000/api/playlists`).then(function (res) {
       console.log(res.data);
-      AddToPlaylist(res.data, id);
+      action === "add"
+        ? AddToPlaylist(res.data, song_id)
+        : DeleteFromPlaylist(song_id);
     });
   };
 
@@ -67,6 +76,40 @@ export default function Song({ cover, preview, title, name, id }) {
     });
   };
 
+  const DeleteFromPlaylist = (songId) => {
+    console.log(songId);
+    console.log(id);
+
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:8000/api/deleteSong`, {
+            params: {
+              songId: songId,
+              playlistId: id,
+            },
+          })
+          .then(function (res) {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            }).then(() => {
+              window.location.reload();
+            });
+          });
+      }
+    });
+  };
+
   return (
     <div className="list__item  d-flex justify-content-between align-items-center">
       <div className="list__cover">
@@ -92,7 +135,10 @@ export default function Song({ cover, preview, title, name, id }) {
             <i className="bx bx-heart"></i>
           </a>
         </li>
-        <li className="dropstart d-inline-flex" onClick={() => handleClick(id)}>
+        <li
+          className="dropstart d-inline-flex"
+          onClick={() => handleClick(song_id)}
+        >
           <a
             className="dropdown-link"
             role="button"
@@ -100,7 +146,7 @@ export default function Song({ cover, preview, title, name, id }) {
             aria-label="Cover options"
             aria-expanded="false"
           >
-            <i className="bx bx-list-plus"></i>
+            <i className={`bx bx-${icon}`}></i>
           </a>
         </li>
       </ul>
