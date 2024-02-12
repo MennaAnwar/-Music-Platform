@@ -2,16 +2,11 @@ import axios from "axios";
 import "./Artist.css";
 import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
+import { useContext } from "react";
+import Context from "../../Context";
 
-export default function Song({
-  cover,
-  preview,
-  title,
-  name,
-  song_id,
-  icon,
-  action,
-}) {
+export default function Song({ cover, title, name, song_id, icon, action }) {
+  const { show, setShow, setSongPreview } = useContext(Context);
   const { id } = useParams();
 
   const handleClick = async (song_id) => {
@@ -110,8 +105,30 @@ export default function Song({
     });
   };
 
+  const playSong = (songId) => {
+    axios
+      .get(`http://localhost:8000/api/track`, {
+        params: {
+          songId: songId,
+        },
+      })
+      .then(function (res) {
+        console.log(res.data);
+        setSongPreview({
+          title: res.data.title,
+          artist: res.data.artist.name,
+          preview: res.data.preview,
+          image: res.data.album.cover,
+        });
+        setShow((show) => true);
+      });
+  };
+
   return (
-    <div className="list__item  d-flex justify-content-between align-items-center">
+    <div
+      className="list__item  d-flex justify-content-between align-items-center"
+      onClick={() => playSong(song_id)}
+    >
       <div className="list__cover">
         <div className="d-flex justify-content-between align-items-center">
           <img src={cover} alt={title} />

@@ -12,15 +12,22 @@ import GenresPage from "./Components/GenresPage/GenresPage";
 import MusicPage from "./Components/MusicPage/MusicPage";
 import PlaylistsPage from "./Components/PlaylistsPage/PlaylistsPage";
 import PlaylistDetails from "./Components/PlaylistDetails/PlaylistDetails";
+import MusicPreview from "./Components/MusicPreview/MusicPreview";
 
 function App() {
   const [sidebar, IsOpen] = useState(false);
+  const [show, setShow] = useState(false);
+  const [songPreview, setSongPreview] = useState([]);
 
   return (
     <Context.Provider
       value={{
         sidebar,
         IsOpen,
+        show,
+        setShow,
+        songPreview,
+        setSongPreview,
       }}
     >
       <Sidebar />
@@ -37,6 +44,7 @@ function App() {
           <Route path="/playlist/:id" element={<PlaylistDetails />} />
         </Routes>
       </main>
+      <MusicPreview />
     </Context.Provider>
   );
 }
