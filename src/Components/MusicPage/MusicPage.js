@@ -4,14 +4,16 @@ import Hero from "./../Hero/Hero";
 import "./MusicPage.css";
 import { useEffect, useState, useContext } from "react";
 import Context from "../../Context";
+import Loader from "../Loader/Loader";
 
 export default function MusicPage() {
   const [q, setQ] = useState("treat");
   const [songs, setSongs] = useState([]);
-  const { isLoading, setIsLoading, userData, setUserData } =
-    useContext(Context);
+  const { isLoading, setIsLoading, userData } = useContext(Context);
 
   useEffect(() => {
+    setIsLoading(true);
+
     axios
       .get(`http://localhost:8000/api/search`, {
         params: {
@@ -24,6 +26,7 @@ export default function MusicPage() {
       .then(function (res) {
         console.log(res.data.data);
         setSongs(res.data.data);
+        setIsLoading(false);
       });
   }, [q]);
 
@@ -31,7 +34,9 @@ export default function MusicPage() {
     setQ(e.target.value);
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <Hero />
       <div className="under-hero container">

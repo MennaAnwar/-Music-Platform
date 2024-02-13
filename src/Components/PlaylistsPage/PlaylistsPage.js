@@ -10,15 +10,17 @@ import "swiper/css/pagination";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
 import Context from "../../Context";
+import Loader from "../Loader/Loader";
 
 export default function PlaylistsPage() {
   const [playlists, setPlaylists] = useState([]);
   const [my_playlists, setMyPlaylists] = useState([]);
   const [dropdownVisibility, setDropdownVisibility] = useState({});
-  const { isLoading, setIsLoading, userData, setUserData } =
-    useContext(Context);
+  const { isLoading, setIsLoading, userData } = useContext(Context);
 
   useEffect(() => {
+    setIsLoading(true);
+
     axios
       .get(`http://localhost:8000/api/chart`, {
         headers: {
@@ -27,9 +29,10 @@ export default function PlaylistsPage() {
       })
       .then(function (res) {
         setPlaylists(res.data.playlists.data);
-        console.log(res.data);
+        setIsLoading(false);
       });
 
+    setIsLoading(true);
     axios
       .get(`http://localhost:8000/api/playlists`, {
         headers: {
@@ -38,7 +41,7 @@ export default function PlaylistsPage() {
       })
       .then(function (res) {
         setMyPlaylists(res.data);
-        console.log(res.data);
+        setIsLoading(false);
       });
   }, []);
 
@@ -142,7 +145,9 @@ export default function PlaylistsPage() {
     });
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <Hero />
       <div className="section">

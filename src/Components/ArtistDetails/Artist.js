@@ -10,15 +10,19 @@ import Hero from "../Hero/Hero";
 import "./Artist.css";
 import Song from "./SongItem";
 import Context from "../../Context";
+import Loader from "../Loader/Loader";
 
 export default function ArtistDetails() {
   const { name } = useParams();
   const [artist, setArtist] = useState([]);
   const [TrackList, setTrackList] = useState([]);
   const [albums, setAlbums] = useState([]);
-  const { userData, setUserData, setIsLoading } = useContext(Context);
+  const { userData, setIsLoading, isLoading } =
+    useContext(Context);
 
   useEffect(() => {
+    setIsLoading(true);
+
     axios
       .get(`http://localhost:8000/api/artist`, {
         params: {
@@ -29,6 +33,8 @@ export default function ArtistDetails() {
         },
       })
       .then(function (res) {
+        setIsLoading(false);
+
         console.log(res.data);
         setArtist(res.data.artist);
         setTrackList(res.data.tracks.data);
@@ -36,13 +42,9 @@ export default function ArtistDetails() {
       });
   }, []);
 
-  useEffect(() => {
-    console.log(artist);
-    console.log(TrackList);
-    console.log(albums);
-  }, [artist, TrackList, albums]);
-
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <Hero />
       <div className="under-hero container">

@@ -1,21 +1,21 @@
 import Hero from "../Hero/Hero";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { FreeMode, Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
-import { Images } from "../LandingPage/Artists/imgs";
 import "./ArtistsPage.css";
 import { Link } from "react-router-dom";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Context from "../../Context";
+import Loader from "../Loader/Loader";
 
 export default function ArtistsPage() {
   const [artists, setArtists] = useState([]);
-  const { userData, setUserData, setIsLoading } = useContext(Context);
+  const { userData, setIsLoading, isLoading } = useContext(Context);
 
   useEffect(() => {
+    setIsLoading(true);
+
     axios
       .get(`http://localhost:8000/api/chart`, {
         headers: {
@@ -24,15 +24,13 @@ export default function ArtistsPage() {
       })
       .then(function (res) {
         setArtists(res.data.artists.data);
-        console.log(res.data);
+        setIsLoading(false);
       });
   }, []);
 
-  useEffect(() => {
-    console.log(artists);
-  }, [artists]);
-
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <Hero />
       <div className="under-hero container">

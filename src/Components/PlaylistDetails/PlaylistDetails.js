@@ -4,6 +4,7 @@ import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import MusicPlayer from "./../MusicPlayer/MusicPlayer";
 import Context from "../../Context";
+import Loader from "../Loader/Loader";
 
 export default function PlaylistDetails() {
   const { id } = useParams();
@@ -12,6 +13,7 @@ export default function PlaylistDetails() {
     useContext(Context);
 
   useEffect(() => {
+    setIsLoading(true);
     axios
       .get(`http://localhost:8000/api/playlist_songs`, {
         params: {
@@ -23,10 +25,13 @@ export default function PlaylistDetails() {
       })
       .then(function (res) {
         setSongs(res.data);
+        setIsLoading(false);
       });
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <Hero />
       <div className="under-hero container">

@@ -1,15 +1,16 @@
 import Hero from "../Hero/Hero";
-import { GenresImages } from "./Images";
 import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Context from "../../Context";
+import Loader from "../Loader/Loader";
 
 export default function GenresPage() {
   const [genre, setGenre] = useState([]);
-  const { isLoading, setIsLoading, userData, setUserData } =
-    useContext(Context);
+  const { isLoading, setIsLoading, userData } = useContext(Context);
 
   useEffect(() => {
+    setIsLoading(true);
+
     axios
       .get(`http://localhost:8000/api/genre`, {
         headers: {
@@ -18,10 +19,13 @@ export default function GenresPage() {
       })
       .then(function (res) {
         setGenre(res.data.data);
+        setIsLoading(false);
       });
   }, []);
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <Hero />
       <div className="under-hero container">

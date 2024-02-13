@@ -4,14 +4,17 @@ import Swal from "sweetalert2";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import Context from "../../Context";
+import Loader from "../Loader/Loader";
 
 export default function Song({ cover, title, name, song_id, icon, action }) {
-  const { show, setShow, setSongPreview, userData, setUserData, setIsLoading } =
+  const { setShow, setSongPreview, userData, setIsLoading, isLoading } =
     useContext(Context);
 
   const { id } = useParams();
 
   const handleClick = async (song_id) => {
+    setIsLoading(true);
+
     axios
       .get(`http://localhost:8000/api/playlists`, {
         headers: {
@@ -19,7 +22,7 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
         },
       })
       .then(function (res) {
-        console.log(res.data);
+        setIsLoading(false);
         action === "add"
           ? AddToPlaylist(res.data, song_id)
           : DeleteFromPlaylist(song_id);
@@ -125,6 +128,8 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
   };
 
   const playSong = (songId) => {
+    setIsLoading(true);
+
     axios
       .get(`http://localhost:8000/api/track`, {
         params: {
@@ -135,7 +140,8 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
         },
       })
       .then(function (res) {
-        console.log(res.data);
+        setIsLoading(false);
+
         setSongPreview({
           title: res.data.title,
           artist: res.data.artist.name,
@@ -146,7 +152,9 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
       });
   };
 
-  return (
+  return isLoading ? (
+    <Loader />
+  ) : (
     <div
       className="list__item  d-flex justify-content-between align-items-center"
       onClick={() => playSong(song_id)}

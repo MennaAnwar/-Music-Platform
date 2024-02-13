@@ -9,6 +9,7 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
 import Context from "../../Context";
+import Loader from "../Loader/Loader";
 
 export default function Dashboard() {
   const [albums, setAlbums] = useState([]);
@@ -22,9 +23,7 @@ export default function Dashboard() {
     logged_in,
     setLoggedIn,
     userData,
-    setUserData,
     setCookie,
-    removeCookie,
   } = useContext(Context);
 
   useEffect(() => {
@@ -43,6 +42,8 @@ export default function Dashboard() {
   }, [userData]);
 
   useEffect(() => {
+    setIsLoading(true);
+
     axios
       .get(`http://localhost:8000/api/chart`, {
         headers: {
@@ -55,18 +56,13 @@ export default function Dashboard() {
         setPlaylists(res.data.playlists.data);
         setPodcasts(res.data.podcasts.data);
         setTracks(res.data.tracks.data);
-        console.log(res.data);
+        setIsLoading(false);
       });
   }, []);
-
-  useEffect(() => {
-    console.log(artists);
-    console.log(playlists);
-    console.log(podcasts);
-    console.log(tracks);
-  }, [artists, playlists, podcasts, tracks, albums]);
-
-  return (
+  
+  return isLoading ? (
+    <Loader />
+  ) : (
     <>
       <Hero />
       <div className="under-hero container">
