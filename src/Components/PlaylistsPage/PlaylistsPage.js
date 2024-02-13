@@ -19,16 +19,28 @@ export default function PlaylistsPage() {
     useContext(Context);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/chart`).then(function (res) {
-      setPlaylists(res.data.playlists.data);
-      console.log(res.data);
-    });
+    axios
+      .get(`http://localhost:8000/api/chart`, {
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
+        },
+      })
+      .then(function (res) {
+        setPlaylists(res.data.playlists.data);
+        console.log(res.data);
+      });
 
-    axios.get(`http://localhost:8000/api/playlists`).then(function (res) {
-      setMyPlaylists(res.data);
-      console.log(res.data);
-    });
-  }, [my_playlists, playlists]);
+    axios
+      .get(`http://localhost:8000/api/playlists`, {
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
+        },
+      })
+      .then(function (res) {
+        setMyPlaylists(res.data);
+        console.log(res.data);
+      });
+  }, []);
 
   const handleClick = () => {
     Swal.fire({
