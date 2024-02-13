@@ -17,12 +17,10 @@ export default function ArtistDetails() {
   const [artist, setArtist] = useState([]);
   const [TrackList, setTrackList] = useState([]);
   const [albums, setAlbums] = useState([]);
-  const { userData, setIsLoading, isLoading } =
-    useContext(Context);
+  const { userData, setIsLoading, isLoading } = useContext(Context);
 
   useEffect(() => {
     setIsLoading(true);
-
     axios
       .get(`http://localhost:8000/api/artist`, {
         params: {
@@ -34,13 +32,15 @@ export default function ArtistDetails() {
       })
       .then(function (res) {
         setIsLoading(false);
-
-        console.log(res.data);
         setArtist(res.data.artist);
         setTrackList(res.data.tracks.data);
         setAlbums(res.data.albums.data);
+      })
+      .catch(function (error) {
+        setIsLoading(false);
+        console.error("An error occurred:", error);
       });
-  }, []);
+  }, [name, userData.token]);
 
   return isLoading ? (
     <Loader />

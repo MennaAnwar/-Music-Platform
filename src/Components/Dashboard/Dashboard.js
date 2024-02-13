@@ -17,14 +17,8 @@ export default function Dashboard() {
   const [playlists, setPlaylists] = useState([]);
   const [podcasts, setPodcasts] = useState([]);
   const [tracks, setTracks] = useState([]);
-  const {
-    isLoading,
-    setIsLoading,
-    logged_in,
-    setLoggedIn,
-    userData,
-    setCookie,
-  } = useContext(Context);
+  const { isLoading, setIsLoading, logged_in, userData, setCookie } =
+    useContext(Context);
 
   useEffect(() => {
     if (logged_in === true) {
@@ -56,10 +50,15 @@ export default function Dashboard() {
         setPlaylists(res.data.playlists.data);
         setPodcasts(res.data.podcasts.data);
         setTracks(res.data.tracks.data);
+      })
+      .catch(function (error) {
+        console.error("Error fetching chart data:", error);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
-  }, []);
-  
+  }, [userData.token]);
+
   return isLoading ? (
     <Loader />
   ) : (

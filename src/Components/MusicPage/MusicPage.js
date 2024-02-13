@@ -12,6 +12,13 @@ export default function MusicPage() {
   const { isLoading, setIsLoading, userData } = useContext(Context);
 
   useEffect(() => {
+    if (!q.trim()) {
+      console.log("Search query is empty.");
+      setIsLoading(false);
+      setSongs([]);
+      return;
+    }
+
     setIsLoading(true);
 
     axios
@@ -26,9 +33,14 @@ export default function MusicPage() {
       .then(function (res) {
         console.log(res.data.data);
         setSongs(res.data.data);
+      })
+      .catch(function (error) {
+        console.error("Failed to fetch search results:", error);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
-  }, [q]);
+  }, [q, userData.token]);
 
   const handleChange = (e) => {
     setQ(e.target.value);

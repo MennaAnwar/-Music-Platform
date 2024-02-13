@@ -21,29 +21,31 @@ export default function PlaylistsPage() {
   useEffect(() => {
     setIsLoading(true);
 
-    axios
-      .get(`http://localhost:8000/api/chart`, {
+    Promise.all([
+      axios.get(`http://localhost:8000/api/chart`, {
         headers: {
           Authorization: `Bearer ${userData.token}`,
         },
-      })
-      .then(function (res) {
-        setPlaylists(res.data.playlists.data);
-        setIsLoading(false);
-      });
+      }),
+      axios.get(`http://localhost:8000/api/playlists`, {
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
+        },
+      }),
+    ])
+      .then(function (responses) {
+        const [chartResponse, playlistsResponse] = responses;
 
-    setIsLoading(true);
-    axios
-      .get(`http://localhost:8000/api/playlists`, {
-        headers: {
-          Authorization: `Bearer ${userData.token}`,
-        },
+        setPlaylists(chartResponse.data.playlists.data);
+        setMyPlaylists(playlistsResponse.data);
       })
-      .then(function (res) {
-        setMyPlaylists(res.data);
+      .catch(function (error) {
+        console.error("Failed to fetch data:", error);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [userData.token]);
 
   const handleClick = () => {
     Swal.fire({

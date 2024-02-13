@@ -7,7 +7,6 @@ import Loader from "../Loader/Loader";
 export default function GenresPage() {
   const [genre, setGenre] = useState([]);
   const { isLoading, setIsLoading, userData } = useContext(Context);
-
   useEffect(() => {
     setIsLoading(true);
 
@@ -19,6 +18,11 @@ export default function GenresPage() {
       })
       .then(function (res) {
         setGenre(res.data.data);
+      })
+      .catch(function (error) {
+        console.error("Failed to fetch genre data:", error);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
   }, []);

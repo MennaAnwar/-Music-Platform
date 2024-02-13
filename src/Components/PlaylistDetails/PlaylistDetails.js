@@ -25,9 +25,14 @@ export default function PlaylistDetails() {
       })
       .then(function (res) {
         setSongs(res.data);
+      })
+      .catch(function (error) {
+        console.error("Failed to fetch playlist songs:", error);
+      })
+      .finally(() => {
         setIsLoading(false);
       });
-  }, []);
+  }, [id, userData.token]);
 
   return isLoading ? (
     <Loader />

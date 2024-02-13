@@ -36,16 +36,13 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
     }, {});
 
     Swal.fire({
-      title: "Submit your Github username",
+      title: "Choose a playlist",
       input: "select",
       inputOptions: inputOptions,
-      inputAttributes: {
-        autocapitalize: "off",
-      },
       showCancelButton: true,
       confirmButtonText: "Add",
       showLoaderOnConfirm: true,
-      preConfirm: async (playlistId) => {
+      preConfirm: (playlistId) => {
         return axios
           .post(
             `http://localhost:8000/api/addSong`,
@@ -60,40 +57,47 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
             }
           )
           .then((response) => {
-            if (response.status !== 200 && response.status !== 201) {
-              throw new Error(response.statusText);
+            if (response.status === 200 || response.status === 201) {
+              return response.data;
             }
-            return response.data;
+            throw new Error(response.statusText);
           })
           .catch((error) => {
             if (error.response) {
-              Swal.showValidationMessage(
-                `Request failed: ${error.response.data}`
+              throw new Error(
+                `Request failed: ${
+                  error.response.data.message || error.response.statusText
+                }`
               );
             } else if (error.request) {
-              Swal.showValidationMessage(`Request failed: ${error.request}`);
+              throw new Error("No response from server");
             } else {
-              Swal.showValidationMessage(`Error: ${error.message}`);
+              throw new Error("Error: " + error.message);
             }
           });
       },
       allowOutsideClick: () => !Swal.isLoading(),
-    }).then((result) => {
-      if (result.isConfirmed) {
+    })
+      .then((result) => {
+        if (result.isConfirmed) {
+          Swal.fire({
+            icon: "success",
+            title: "Song added successfully!",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+        }
+      })
+      .catch((error) => {
         Swal.fire({
-          icon: "success",
-          title: "Your work has been saved",
-          showConfirmButton: false,
-          timer: 1500,
+          icon: "error",
+          title: "Failed to add song",
+          text: error.message,
         });
-      }
-    });
+      });
   };
 
   const DeleteFromPlaylist = (songId) => {
-    console.log(songId);
-    console.log(id);
-
     Swal.fire({
       title: "Are you sure?",
       text: "You won't be able to revert this!",
@@ -106,7 +110,7 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
       if (result.isConfirmed) {
         axios
           .delete(`http://localhost:8000/api/deleteSong`, {
-            params: {
+            data: {
               songId: songId,
               playlistId: id,
             },
@@ -114,14 +118,25 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
               Authorization: `Bearer ${userData.token}`,
             },
           })
-          .then(function (res) {
-            Swal.fire({
-              title: "Deleted!",
-              text: "Your file has been deleted.",
-              icon: "success",
-            }).then(() => {
-              window.location.reload();
-            });
+          .then(() => {
+            Swal.fire(
+              "Deleted!",
+              "The song has been removed from the playlist.",
+              "success"
+            );
+          })
+          .catch((error) => {
+            let errorMessage = "An error occurred";
+            if (
+              error.response &&
+              error.response.data &&
+              error.response.data.message
+            ) {
+              errorMessage = error.response.data.message;
+            } else if (error.message) {
+              errorMessage = error.message;
+            }
+            Swal.fire("Failed!", errorMessage, "error");
           });
       }
     });

@@ -1,5 +1,6 @@
 import "./MusicPlayer.css";
 import Song from "../ArtistDetails/SongItem";
+import MusicPreview from "../MusicPreview/MusicPreview";
 
 export default function MusicPlayer({ songs, action, icon }) {
   return (
@@ -24,6 +25,7 @@ export default function MusicPlayer({ songs, action, icon }) {
           </div>
         </div>
       </div>
+      <MusicPreview />
     </div>
   );
 }

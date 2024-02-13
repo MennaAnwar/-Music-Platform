@@ -25,6 +25,10 @@ export default function ArtistsPage() {
       .then(function (res) {
         setArtists(res.data.artists.data);
         setIsLoading(false);
+      })
+      .catch(function (error) {
+        console.error("Error fetching data: ", error);
+        setIsLoading(false);
       });
   }, []);
 
