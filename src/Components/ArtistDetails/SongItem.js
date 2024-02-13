@@ -44,10 +44,18 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
       showLoaderOnConfirm: true,
       preConfirm: async (playlistId) => {
         return axios
-          .post(`http://localhost:8000/api/addSong`, {
-            songId: songId,
-            playlistId: playlistId,
-          })
+          .post(
+            `http://localhost:8000/api/addSong`,
+            {
+              songId: songId,
+              playlistId: playlistId,
+            },
+            {
+              headers: {
+                Authorization: `Bearer ${userData.token}`,
+              },
+            }
+          )
           .then((response) => {
             if (response.status !== 200 && response.status !== 201) {
               throw new Error(response.statusText);
@@ -99,6 +107,9 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
               songId: songId,
               playlistId: id,
             },
+            headers: {
+              Authorization: `Bearer ${userData.token}`,
+            },
           })
           .then(function (res) {
             Swal.fire({
@@ -118,6 +129,9 @@ export default function Song({ cover, title, name, song_id, icon, action }) {
       .get(`http://localhost:8000/api/track`, {
         params: {
           songId: songId,
+        },
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
         },
       })
       .then(function (res) {
