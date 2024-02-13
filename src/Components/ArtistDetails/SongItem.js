@@ -6,16 +6,24 @@ import { useContext } from "react";
 import Context from "../../Context";
 
 export default function Song({ cover, title, name, song_id, icon, action }) {
-  const { show, setShow, setSongPreview } = useContext(Context);
+  const { show, setShow, setSongPreview, userData, setUserData, setIsLoading } =
+    useContext(Context);
+
   const { id } = useParams();
 
   const handleClick = async (song_id) => {
-    axios.get(`http://localhost:8000/api/playlists`).then(function (res) {
-      console.log(res.data);
-      action === "add"
-        ? AddToPlaylist(res.data, song_id)
-        : DeleteFromPlaylist(song_id);
-    });
+    axios
+      .get(`http://localhost:8000/api/playlists`, {
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
+        },
+      })
+      .then(function (res) {
+        console.log(res.data);
+        action === "add"
+          ? AddToPlaylist(res.data, song_id)
+          : DeleteFromPlaylist(song_id);
+      });
   };
 
   const AddToPlaylist = (playlists, songId) => {

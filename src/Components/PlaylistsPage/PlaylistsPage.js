@@ -1,6 +1,6 @@
 import "./PlaylistsPage.css";
 import Hero from "./../Hero/Hero";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { FreeMode, Pagination, Autoplay } from "swiper/modules";
@@ -9,11 +9,14 @@ import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import Swal from "sweetalert2";
 import { Link } from "react-router-dom";
+import Context from "../../Context";
 
 export default function PlaylistsPage() {
   const [playlists, setPlaylists] = useState([]);
   const [my_playlists, setMyPlaylists] = useState([]);
   const [dropdownVisibility, setDropdownVisibility] = useState({});
+  const { isLoading, setIsLoading, userData, setUserData } =
+    useContext(Context);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/chart`).then(function (res) {
@@ -39,7 +42,15 @@ export default function PlaylistsPage() {
       showLoaderOnConfirm: true,
       preConfirm: (playlistName) => {
         return axios
-          .post(`http://localhost:8000/api/playlists`, { name: playlistName })
+          .post(
+            `http://localhost:8000/api/playlists`,
+            { name: playlistName },
+            {
+              headers: {
+                Authorization: `Bearer ${userData.token}`,
+              },
+            }
+          )
           .then((response) => {
             if (response.status !== 200 && response.status !== 201) {
               throw new Error(response.statusText);
@@ -100,6 +111,9 @@ export default function PlaylistsPage() {
         axios
           .delete(`http://localhost:8000/api/deletePlaylist`, {
             params: { playlistId: id },
+            headers: {
+              Authorization: `Bearer ${userData.token}`,
+            },
           })
           .then((res) => {
             setMyPlaylists(res.data.remainingPlaylists);

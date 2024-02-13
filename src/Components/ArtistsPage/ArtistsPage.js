@@ -7,17 +7,25 @@ import "swiper/css/pagination";
 import { Images } from "../LandingPage/Artists/imgs";
 import "./ArtistsPage.css";
 import { Link } from "react-router-dom";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import Context from "../../Context";
 
 export default function ArtistsPage() {
   const [artists, setArtists] = useState([]);
+  const { userData, setUserData, setIsLoading } = useContext(Context);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/chart`).then(function (res) {
-      setArtists(res.data.artists.data);
-      console.log(res.data);
-    });
+    axios
+      .get(`http://localhost:8000/api/chart`, {
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
+        },
+      })
+      .then(function (res) {
+        setArtists(res.data.artists.data);
+        console.log(res.data);
+      });
   }, []);
 
   useEffect(() => {

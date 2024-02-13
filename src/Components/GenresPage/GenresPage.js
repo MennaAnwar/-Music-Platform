@@ -1,15 +1,24 @@
 import Hero from "../Hero/Hero";
 import { GenresImages } from "./Images";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import Context from "../../Context";
 
 export default function GenresPage() {
   const [genre, setGenre] = useState([]);
+  const { isLoading, setIsLoading, userData, setUserData } =
+    useContext(Context);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/genre`).then(function (res) {
-      setGenre(res.data.data);
-    });
+    axios
+      .get(`http://localhost:8000/api/genre`, {
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
+        },
+      })
+      .then(function (res) {
+        setGenre(res.data.data);
+      });
   }, []);
 
   return (

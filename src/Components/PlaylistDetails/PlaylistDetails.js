@@ -1,17 +1,24 @@
 import { useParams } from "react-router-dom";
 import Hero from "../Hero/Hero";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import axios from "axios";
 import MusicPlayer from "./../MusicPlayer/MusicPlayer";
+import Context from "../../Context";
 
 export default function PlaylistDetails() {
   const { id } = useParams();
   const [songs, setSongs] = useState([]);
+  const { isLoading, setIsLoading, userData, setUserData } =
+    useContext(Context);
+
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/playlist_songs`, {
         params: {
           playlistId: id,
+        },
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
         },
       })
       .then(function (res) {

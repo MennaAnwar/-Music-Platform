@@ -33,7 +33,7 @@
   z-index: 1;
 }
 
-a {
+.app a {
   text-decoration: none;
   color: white;
   cursor: pointer;

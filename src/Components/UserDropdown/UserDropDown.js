@@ -46,7 +46,7 @@ export default function Dropdown() {
           <Link to="/">Projects</Link>
         </li>
         <li>
-          <Link to="/Membership" onClick={logout}>
+          <Link to="/membership" onClick={logout}>
             Logout
           </Link>
         </li>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -9,18 +9,23 @@ import "swiper/css/pagination";
 import Hero from "../Hero/Hero";
 import "./Artist.css";
 import Song from "./SongItem";
+import Context from "../../Context";
 
 export default function ArtistDetails() {
   const { name } = useParams();
   const [artist, setArtist] = useState([]);
   const [TrackList, setTrackList] = useState([]);
   const [albums, setAlbums] = useState([]);
+  const { userData, setUserData, setIsLoading } = useContext(Context);
 
   useEffect(() => {
     axios
       .get(`http://localhost:8000/api/artist`, {
         params: {
           artist: name,
+        },
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
         },
       })
       .then(function (res) {

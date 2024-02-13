@@ -43,14 +43,20 @@ export default function Dashboard() {
   }, [userData]);
 
   useEffect(() => {
-    axios.get(`http://localhost:8000/api/chart`).then(function (res) {
-      setAlbums(res.data.albums.data);
-      setArtists(res.data.artists.data);
-      setPlaylists(res.data.playlists.data);
-      setPodcasts(res.data.podcasts.data);
-      setTracks(res.data.tracks.data);
-      console.log(res.data);
-    });
+    axios
+      .get(`http://localhost:8000/api/chart`, {
+        headers: {
+          Authorization: `Bearer ${userData.token}`,
+        },
+      })
+      .then(function (res) {
+        setAlbums(res.data.albums.data);
+        setArtists(res.data.artists.data);
+        setPlaylists(res.data.playlists.data);
+        setPodcasts(res.data.podcasts.data);
+        setTracks(res.data.tracks.data);
+        console.log(res.data);
+      });
   }, []);
 
   useEffect(() => {
