@@ -1,5 +1,5 @@
 import "./Dashboard.css";
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import Hero from "../Hero/Hero";
 import { Swiper, SwiperSlide } from "swiper/react";
@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/free-mode";
 import "swiper/css/pagination";
 import { Link } from "react-router-dom";
+import Context from "../../Context";
 
 export default function Dashboard() {
   const [albums, setAlbums] = useState([]);
@@ -15,6 +16,31 @@ export default function Dashboard() {
   const [playlists, setPlaylists] = useState([]);
   const [podcasts, setPodcasts] = useState([]);
   const [tracks, setTracks] = useState([]);
+  const {
+    isLoading,
+    setIsLoading,
+    logged_in,
+    setLoggedIn,
+    userData,
+    setUserData,
+    setCookie,
+    removeCookie,
+  } = useContext(Context);
+
+  useEffect(() => {
+    if (logged_in === true) {
+      setCookie("rememberMe", true, {
+        path: "/",
+        expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+      });
+      for (const key in userData) {
+        setCookie(key, userData[key], {
+          path: "/",
+          expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+        });
+      }
+    }
+  }, [userData]);
 
   useEffect(() => {
     axios.get(`http://localhost:8000/api/chart`).then(function (res) {
