@@ -15,6 +15,7 @@ import PlaylistDetails from "./Components/PlaylistDetails/PlaylistDetails";
 import MusicPreview from "./Components/MusicPreview/MusicPreview";
 import Membership from "./Components/Membership/Membership";
 import "./App.css";
+import LandingPage from "./Components/LandingPage/LandingPage";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -33,12 +34,13 @@ function App() {
 
   const location = useLocation();
   const isMembershipRoute = location.pathname === "/membership";
+  const isLPRoute = location.pathname === "/";
 
   let navigate = useNavigate();
 
   useEffect(() => {
     if (cookies.rememberMe === false) {
-      navigate(`/membership`);
+      navigate(`/`);
     } else {
       navigate(`/`);
       for (const key in userData) {
@@ -69,13 +71,16 @@ function App() {
         setSongPreview,
       }}
     >
-      {!isMembershipRoute && <Sidebar />}
-      {!isMembershipRoute && <MobSidebar />}
-      {!isMembershipRoute && <Navbar />}
+      {!isMembershipRoute && !isLPRoute && <Sidebar />}
+      {!isMembershipRoute && !isLPRoute && <MobSidebar />}
+      {!isMembershipRoute && !isLPRoute && <Navbar />}
+      <Routes>
+        <Route path="/" element={<LandingPage />} />
+      </Routes>
       <main id="page_content">
         <Routes>
           <Route path="/membership" element={<Membership />} />
-          <Route path="/" element={<Dashboard />} />
+          <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/artist/:name" element={<ArtistDetails />} />
           <Route path="/artists" element={<ArtistsPage />} />
           <Route path="/genres" element={<GenresPage />} />
