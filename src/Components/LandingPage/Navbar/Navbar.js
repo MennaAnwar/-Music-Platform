@@ -1,6 +1,12 @@
 import "./Navbar.css";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [toggled, setToggled] = useState(false);
+  const handleClick = () => {
+    setToggled((toggled) => !toggled);
+  };
+
   return (
     <header className="site-header">
       <div className="container-fluid">
@@ -16,8 +22,8 @@ export default function Navbar() {
             </div>
           </div>
           <div className="col-lg-9">
-            <div className="main-navigation">
-              <button className="hamburger for-mob">
+            <div className={`main-navigation ${toggled ? "toggled" : ""}`}>
+              <button className="hamburger for-mob" onClick={handleClick}>
                 <span></span>
                 <span></span>
                 <span></span>
