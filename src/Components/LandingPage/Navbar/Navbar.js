@@ -1,5 +1,7 @@
 import "./Navbar.css";
 import { useState } from "react";
+import logo from "../../../images/logo.png";
+import { Link } from "react-router-dom";
 
 export default function Navbar() {
   const [toggled, setToggled] = useState(false);
@@ -13,12 +15,7 @@ export default function Navbar() {
         <div className="row align-items-center">
           <div className="col-lg-3">
             <div className="site-branding">
-              {/* <a
-                href="index.html"
-                title="SpiffyPlay - Music Design HTML5 Template"
-              >
-                <img src="assets/images/Logo-new.svg" alt="Logo New" />
-              </a> */}
+              <img src={logo} alt="Logo New" />
             </div>
           </div>
           <div className="col-lg-9">
@@ -32,34 +29,19 @@ export default function Navbar() {
                 <div className="menu-main-menu-container">
                   <ul className="d-flex">
                     <li>
-                      <a href="index.html" title="Home">
-                        Home
-                      </a>
+                      <Link to="/">Home</Link>
                     </li>
                     <li>
-                      <a href="artists.html" title="Artists">
-                        Artists
-                      </a>
+                      <Link to="/">Artists</Link>
                     </li>
                     <li>
-                      <a href="albums.html" title="Albums">
-                        Albums
-                      </a>
-                    </li>
-                    <li>
-                      <a href="events.html" title="Events">
-                        Events
-                      </a>
-                    </li>
-                    <li>
-                      <a href="gallery.html" title="Gallery">
-                        Gallery
-                      </a>
-                    </li>
-                    <li>
-                      <a href="index.html#songs" title="Songs">
-                        Songs
-                      </a>
+                      <Link
+                        to="/membership"
+                        className="d-flex align-items-center"
+                      >
+                        <i className="bx bx-log-in"></i>
+                        <span className="mx-1"> Login / Register</span>
+                      </Link>
                     </li>
                   </ul>
                 </div>

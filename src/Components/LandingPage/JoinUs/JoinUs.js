@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./JoinUs.css";
 
 export default function JoinUs() {
@@ -13,7 +14,7 @@ export default function JoinUs() {
             <div className="music-img"></div>
           </div>
         </div>
-        <div className="col-lg-6 for-des">
+        <div className="col-lg-6 ">
           <div className="footer-content">
             <h1
               className="h1-title wow right-animation"
@@ -31,14 +32,9 @@ export default function JoinUs() {
               listing to.
             </h3>
             <div className="banner-btn">
-              <a
-                title="Google Play"
-                className="sec-btn wow left-animation"
-                data-wow-duration="0.8s"
-                data-wow-delay="0.4s"
-              >
+              <Link to="/membership" className="sec-btn wow left-animation">
                 Register Now
-              </a>
+              </Link>
             </div>
           </div>
         </div>

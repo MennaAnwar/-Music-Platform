@@ -1,5 +1,6 @@
 import JoinUs from "../JoinUs/JoinUs";
 import Title from "../Title/Title";
+import logo from "../../../images/logo.png";
 
 export default function Footer() {
   return (
@@ -20,25 +21,13 @@ export default function Footer() {
         <div className="container">
           <div className="row align-items-center ">
             <div className="col-lg-6 text-left ">
-              <div className="footer-logo">
-                {/*  <a
-                  href="index.html "
-                  title="SpiffyPlay - Music Design HTML5 Template"
-                >
-                  SpiffyPlay
-                </a> */}
+              <div className="footer-logo site-branding">
+                <img src={logo} alt="Logo New" />
               </div>
             </div>
             <div className="col-lg-6 text-right ">
-              <span className="copyright-text ">
-                {/* © 2021 All Rights Reserved By
-                <a
-                  href="https://themeforest.net/user/geekcodelab"
-                  target="_blank"
-                  title="GeekCodeLab "
-                >
-                  GeekCodeLab.
-                </a> */}
+              <span className="copyright-text text-white">
+                © 2021 All Rights Reserved By
               </span>
             </div>
           </div>
