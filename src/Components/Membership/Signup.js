@@ -51,7 +51,7 @@ const Signup = ({ handleClick }) => {
           setUserData(user);
           console.log(userData);
 
-          navigate(`/`);
+          navigate(`/dashboard`);
           console.log(userData);
         });
     } catch (error) {

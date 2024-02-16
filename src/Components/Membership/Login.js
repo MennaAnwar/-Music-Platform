@@ -53,7 +53,7 @@ const Login = ({ handleClick }) => {
         const user = res.data.user;
         setUserData(user);
         console.log(userData);
-        navigate(`/`);
+        navigate(`/dashboard`);
         setIsLoading(false);
       })
       .catch((error) => {

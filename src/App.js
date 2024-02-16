@@ -97,10 +97,10 @@ function App() {
       )}
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/membership" element={<Membership />} />
       </Routes>
       <main id="page_content">
         <Routes>
-          <Route path="/membership" element={<Membership />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/artist/:name" element={<ArtistDetails />} />
           <Route path="/artists" element={<ArtistsPage />} />
