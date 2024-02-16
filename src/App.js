@@ -10,7 +10,6 @@ import { useCookies } from "react-cookie";
 import Context from "./Context";
 import Dashboard from "./Components/Dashboard/Dashboard";
 import Sidebar from "./Components/Sidebar/Sidebar";
-import MobSidebar from "./Components/mobSidebar/mobSidebar";
 import Navbar from "./Components/Navbar/Navbar";
 import ArtistDetails from "./Components/ArtistDetails/Artist";
 import ArtistsPage from "./Components/ArtistsPage/ArtistsPage";
@@ -79,7 +78,6 @@ function App() {
       }}
     >
       {!isMembershipRoute && !isLPRoute && <Sidebar />}
-      {!isMembershipRoute && !isLPRoute && <MobSidebar />}
       {!isMembershipRoute && !isLPRoute && <Navbar />}
       {isMembershipRoute && !isLPRoute && !isLoading && (
         <nav class="navbar navbar-light bg-light membershipNav">

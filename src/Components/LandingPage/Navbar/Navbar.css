@@ -20,7 +20,6 @@
   position: absolute;
   top: 10px;
   z-index: 9999;
-  /* transition: all 0.5s; */
   pointer-events: auto;
   -webkit-appearance: none !important;
 }
@@ -33,7 +32,7 @@
 .site-branding a {
   font-size: 40px;
   font-weight: 900;
-  color: var(--white-color);
+  color: aliceblue;
   pointer-events: auto;
   text-transform: capitalize;
   letter-spacing: -1px;
