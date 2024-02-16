@@ -71,17 +71,6 @@
   position: relative;
 }
 
-.sidebar header .image-text {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin-top: 15px;
-}
-.sidebar header .logo-text {
-  display: flex;
-  flex-direction: column;
-}
-
 .sidebar header .image {
   display: flex;
   align-items: center;
@@ -89,7 +78,7 @@
 }
 
 .sidebar header .image img {
-  width: 40px;
+  width: 60px;
   border-radius: 6px;
 }
 

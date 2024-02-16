@@ -245,18 +245,13 @@ export default function PlaylistsPage() {
               className="swiper-slide-active"
             >
               <div className="d-block text-center">
-                <a href="/demo/app/artist/1/details">
-                  <img
-                    src={item.picture}
-                    alt={item.title}
-                    className="avatar__image"
-                  />
-                </a>
-              </div>
-              <div className="d-block text-center">
-                <a className="mt-3" href="/demo/app/artist/1/details">
-                  {item.title}
-                </a>
+                <img
+                  src={item.picture}
+                  alt={item.title}
+                  className="avatar__image"
+                />
+
+                <div className="d-block text-center">{item.title}</div>
               </div>
             </SwiperSlide>
           ))}

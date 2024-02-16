@@ -30,7 +30,7 @@
   display: none;
   position: absolute;
   border-radius: 7px;
-  background: var(--content-bg);
+  background: aliceblue;
   box-shadow: 0px 0px 8px rgba(214, 214, 214, 0.78);
   list-style: none;
   padding: 0 20px;
@@ -48,8 +48,8 @@
   right: 0px;
   box-sizing: border-box;
   border: 7px solid black;
-  border-color: transparent transparent white white;
-  color: white;
+  border-color: transparent transparent aliceblue aliceblue;
+  color: aliceblue;
   transform-origin: 0 0;
   transform: rotate(135deg);
   box-shadow: -3px 3px 3px -3px rgba(214, 214, 214, 0.78);
@@ -69,13 +69,13 @@
   font-size: 13px;
   padding: 15px 25px 16px 10px;
   text-decoration: none;
-  color: var(--bs-teal);
+  color: #196eed;
   transition: all 0.2s ease-out;
 }
 .User-Dropdown span {
-  background: var(--bs-teal);
+  background: #196eed;
   padding: 3px 10px;
-  color: var(--content-bg);
+  color: #196eed;
   border-radius: 30px;
   font-size: 13px;
 }
@@ -84,7 +84,7 @@
   width: 0px;
   height: 40px;
   position: absolute;
-  background: var(--bs-teal);
+  background: #196eed;
   margin-top: 4px;
   border-radius: 0 1px 1px 0;
   left: 0px;

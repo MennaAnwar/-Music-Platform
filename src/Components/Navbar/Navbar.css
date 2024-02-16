@@ -4,7 +4,7 @@
   right: 0;
   left: 0;
   margin-left: 230px;
-  z-index: 1000;
+  z-index: 100;
   -webkit-transition: all 0.35s ease-in-out;
   transition: all 0.35s ease-in-out;
   padding: 1rem 1.25rem 0;

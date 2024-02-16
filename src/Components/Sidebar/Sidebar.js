@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import logo from "../../images/logo.png";
 import "./Sidebar.css";
 
 const Sidebar = () => {
@@ -6,8 +7,8 @@ const Sidebar = () => {
     <nav className="sidebar">
       <header>
         <div className="image-text">
-          <div className="text logo-text">
-            <h3>LOGO</h3>
+          <div className="text image">
+            <img src={logo} className="logo" />
           </div>
         </div>
       </header>
@@ -15,7 +16,7 @@ const Sidebar = () => {
         <div className="menu">
           <ul className="menu-links p-0 ">
             <li>
-              <Link to="/">
+              <Link to="/dashboard">
                 <i className="bx bx-home icon"></i>
                 <span className="text nav-text">Home</span>
               </Link>

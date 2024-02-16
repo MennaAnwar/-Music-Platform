@@ -40,10 +40,7 @@ export default function Dropdown() {
       </div>
       <ul className={!active ? "User-Dropdown" : "User-Dropdown U-open"}>
         <li>
-          <Link to="/Profile">My Profile</Link>
-        </li>
-        <li>
-          <Link to="/">Projects</Link>
+          <Link to="/playlists">MY Playlists</Link>
         </li>
         <li>
           <Link to="/membership" onClick={logout}>
