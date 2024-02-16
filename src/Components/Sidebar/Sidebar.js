@@ -1,8 +1,31 @@
 import { Link } from "react-router-dom";
 import logo from "../../images/logo.png";
 import "./Sidebar.css";
+import { useContext } from "react";
+import Context from "../../Context";
 
 const Sidebar = () => {
+  const {
+    logged_in,
+    setLoggedIn,
+    userData,
+    setUserData,
+    setCookie,
+    removeCookie,
+  } = useContext(Context);
+
+  const logout = () => {
+    setLoggedIn((logged_in) => !logged_in);
+    setCookie("rememberMe", false, {
+      path: "/",
+      expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+    });
+    setUserData({ user_id: "", name: "", email: "", password: "" });
+    for (const key in userData) {
+      removeCookie(key, { path: "/" });
+    }
+  };
+
   return (
     <nav className="sidebar">
       <header>
@@ -49,6 +72,13 @@ const Sidebar = () => {
               <Link to="/artists">
                 <i className="bx bx-microphone icon"></i>
                 <span className="text nav-text">Artists</span>
+              </Link>
+            </li>
+            <hr className="hr hr-blurry" />
+            <li>
+              <Link to="/" onClick={logout}>
+                <i className="bx bx-log-out icon"></i>
+                <span className="text nav-text">Logout</span>
               </Link>
             </li>
           </ul>

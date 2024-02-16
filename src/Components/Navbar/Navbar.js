@@ -1,10 +1,32 @@
 import "./Navbar.css";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import logo from "../../images/logo.png";
 import { Link } from "react-router-dom";
+import Context from "../../Context";
 
 export default function Navbar() {
   const [toggled, setToggled] = useState(false);
+  const {
+    logged_in,
+    setLoggedIn,
+    userData,
+    setUserData,
+    setCookie,
+    removeCookie,
+  } = useContext(Context);
+
+  const logout = () => {
+    setLoggedIn((logged_in) => !logged_in);
+    setCookie("rememberMe", false, {
+      path: "/",
+      expires: new Date(Date.now() + 365 * 24 * 60 * 60 * 1000),
+    });
+    setUserData({ user_id: "", name: "", email: "", password: "" });
+    for (const key in userData) {
+      removeCookie(key, { path: "/" });
+    }
+  };
+
   const handleClick = () => {
     setToggled((toggled) => !toggled);
   };
@@ -66,6 +88,12 @@ export default function Navbar() {
                       <Link to="/artists">
                         <i className="bx bx-microphone icon"></i>
                         <span className="text nav-text">Artists</span>
+                      </Link>
+                    </li>
+                    <li>
+                      <Link to="/" onClick={logout}>
+                        <i className="bx bx-log-out icon"></i>
+                        <span className="text nav-text">Logout</span>
                       </Link>
                     </li>
                   </ul>
