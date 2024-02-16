@@ -3,6 +3,7 @@ import Context from "../../Context";
 import Loader from "../Loader/Loader";
 import Login from "./Login";
 import Signup from "./Signup";
+import logo from "../../images/logo.png";
 import "./Membership.css";
 
 const Membership = () => {

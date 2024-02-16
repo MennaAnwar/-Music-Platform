@@ -40,3 +40,12 @@
 .swiper-pagination {
   position: unset !important;
 }
+
+.membershipNav {
+  z-index: 1;
+}
+
+.membershipNav img {
+  width: 50px;
+  height: auto;
+}

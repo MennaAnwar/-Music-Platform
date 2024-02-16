@@ -1,4 +1,10 @@
-import { Route, Routes, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  Route,
+  Routes,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import { useEffect, useState } from "react";
 import { useCookies } from "react-cookie";
 import Context from "./Context";
@@ -16,6 +22,7 @@ import MusicPreview from "./Components/MusicPreview/MusicPreview";
 import Membership from "./Components/Membership/Membership";
 import "./App.css";
 import LandingPage from "./Components/LandingPage/LandingPage";
+import logo from "./images/logo.png";
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -74,6 +81,20 @@ function App() {
       {!isMembershipRoute && !isLPRoute && <Sidebar />}
       {!isMembershipRoute && !isLPRoute && <MobSidebar />}
       {!isMembershipRoute && !isLPRoute && <Navbar />}
+      {isMembershipRoute && !isLPRoute && !isLoading && (
+        <nav class="navbar navbar-light bg-light membershipNav">
+          <div class="container-fluid">
+            <Link class="navbar-brand" to="/">
+              <img
+                src={logo}
+                alt=""
+                class="d-inline-block align-text-center mx-2"
+              />
+              Back to home page
+            </Link>
+          </div>
+        </nav>
+      )}
       <Routes>
         <Route path="/" element={<LandingPage />} />
       </Routes>
