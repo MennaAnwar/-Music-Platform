@@ -83,7 +83,7 @@ export default function Dashboard() {
               disableOnInteraction: false,
             }}
             modules={[FreeMode, Pagination, Autoplay]}
-            className="mySwiper"
+            className="mySwiper artists-swiper"
           >
             {artists.map((item, index) => (
               <SwiperSlide
@@ -100,11 +100,12 @@ export default function Dashboard() {
                       className="avatar__image"
                     />
                   </Link>
-                </div>
-                <div className="d-block text-center">
-                  <Link className="mt-3" to={`/artist/${item.id}`}>
-                    {item.name}
-                  </Link>
+
+                  <div className="d-block text-center">
+                    <Link className="mt-3" to={`/artist/${item.id}`}>
+                      {item.name}
+                    </Link>
+                  </div>
                 </div>
               </SwiperSlide>
             ))}
@@ -128,7 +129,7 @@ export default function Dashboard() {
               disableOnInteraction: false,
             }}
             modules={[FreeMode, Pagination, Autoplay]}
-            className="mySwiper"
+            className="mySwiper albums-swiper"
           >
             {albums.map((item, index) => (
               <SwiperSlide
@@ -138,18 +139,13 @@ export default function Dashboard() {
                 className="swiper-slide-active"
               >
                 <div className="d-block text-center">
-                  <a href="/demo/app/artist/1/details">
-                    <img
-                      src={item.cover}
-                      alt={item.title}
-                      className="avatar__image"
-                    />
-                  </a>
-                </div>
-                <div className="d-block text-center">
-                  <a className="mt-3" href="/demo/app/artist/1/details">
-                    {item.title}
-                  </a>
+                  <img
+                    src={item.cover}
+                    alt={item.title}
+                    className="avatar__image"
+                  />
+
+                  <div className="d-block text-center">{item.title}</div>
                 </div>
               </SwiperSlide>
             ))}
@@ -173,7 +169,7 @@ export default function Dashboard() {
               disableOnInteraction: false,
             }}
             modules={[FreeMode, Pagination, Autoplay]}
-            className="mySwiper"
+            className="mySwiper playlists-swiper"
           >
             {playlists.map((item, index) => (
               <SwiperSlide
@@ -183,18 +179,13 @@ export default function Dashboard() {
                 className="swiper-slide-active"
               >
                 <div className="d-block text-center">
-                  <a href="/demo/app/artist/1/details">
-                    <img
-                      src={item.picture}
-                      alt={item.title}
-                      className="avatar__image"
-                    />
-                  </a>
-                </div>
-                <div className="d-block text-center">
-                  <a className="mt-3" href="/demo/app/artist/1/details">
-                    {item.title}
-                  </a>
+                  <img
+                    src={item.picture}
+                    alt={item.title}
+                    className="avatar__image"
+                  />
+
+                  <div className="d-block text-center">{item.title}</div>
                 </div>
               </SwiperSlide>
             ))}
@@ -214,11 +205,11 @@ export default function Dashboard() {
               clickable: true,
             }}
             autoplay={{
-              delay: 2500,
+              delay: 3000,
               disableOnInteraction: false,
             }}
             modules={[FreeMode, Pagination, Autoplay]}
-            className="mySwiper"
+            className="mySwipe podcast-swiper"
           >
             {podcasts.map((item, index) => (
               <SwiperSlide
@@ -228,18 +219,13 @@ export default function Dashboard() {
                 className="swiper-slide-active"
               >
                 <div className="d-block text-center">
-                  <a href="/demo/app/artist/1/details">
-                    <img
-                      src={item.picture}
-                      alt={item.title}
-                      className="avatar__image"
-                    />
-                  </a>
-                </div>
-                <div className="d-block text-center">
-                  <a className="mt-3" href="/demo/app/artist/1/details">
-                    {item.title}
-                  </a>
+                  <img
+                    src={item.picture}
+                    alt={item.title}
+                    className="avatar__image"
+                  />
+
+                  <div className="d-block text-center">{item.title}</div>
                 </div>
               </SwiperSlide>
             ))}
@@ -259,11 +245,11 @@ export default function Dashboard() {
               clickable: true,
             }}
             autoplay={{
-              delay: 2500,
+              delay: 3500,
               disableOnInteraction: false,
             }}
             modules={[FreeMode, Pagination, Autoplay]}
-            className="mySwiper"
+            className="mySwiper tracks-swiper"
           >
             {tracks.map((item, index) => (
               <SwiperSlide
@@ -273,18 +259,13 @@ export default function Dashboard() {
                 className="swiper-slide-active"
               >
                 <div className="d-block text-center">
-                  <a href="/demo/app/artist/1/details">
-                    <img
-                      src={item.album.cover}
-                      alt={item.title}
-                      className="avatar__image"
-                    />
-                  </a>
-                </div>
-                <div className="d-block text-center">
-                  <a className="mt-3" href="/demo/app/artist/1/details">
-                    {item.title}
-                  </a>
+                  <img
+                    src={item.album.cover}
+                    alt={item.title}
+                    className="avatar__image"
+                  />
+
+                  <div className="d-block text-center">{item.title}</div>
                 </div>
               </SwiperSlide>
             ))}

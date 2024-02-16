@@ -49,3 +49,7 @@
   width: 50px;
   height: auto;
 }
+
+.mySwiper a {
+  text-decoration: none;
+}
