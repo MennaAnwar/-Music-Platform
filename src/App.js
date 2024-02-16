@@ -80,7 +80,7 @@ function App() {
       {!isMembershipRoute && !isLPRoute && <Sidebar />}
       {!isMembershipRoute && !isLPRoute && <Navbar />}
       {isMembershipRoute && !isLPRoute && !isLoading && (
-        <nav class="navbar navbar-light bg-light membershipNav">
+        <nav class="navbar navbar-light  membershipNav">
           <div class="container-fluid">
             <Link class="navbar-brand" to="/">
               <img
