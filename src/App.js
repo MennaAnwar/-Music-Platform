@@ -48,7 +48,7 @@ function App() {
     if (cookies.rememberMe === false) {
       navigate(`/`);
     } else {
-      navigate(`/`);
+      navigate(`/dashboard`);
       for (const key in userData) {
         if (key in cookies) {
           userData[key] = cookies[key];
